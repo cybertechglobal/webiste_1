@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header className="relative z-10 min-h-14 pt-5 lg:pt-10">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-8 px-4 lg:px-6">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-8 gap-y-5 px-4 lg:px-6">
         <Link href="/" aria-label="Go to homepage" prefetch={false}>
           <Image
             src="/logo.png"
