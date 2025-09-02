@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="relative pt-10 sm:pt-16 pb-15 grow">
+    <main className="relative grow pt-10 pb-15 sm:pt-16">
       <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center lg:px-6">
-        <h1 className="text-center font-medium text-white text-[50px]/12.5">
+        <h1 className="text-center text-[50px]/12.5 font-medium text-white">
           Risus quis at <span className="text-primary">nisi nunc</span>
         </h1>
         <p className="mt-4 text-center text-white lg:mt-2">
@@ -25,7 +25,7 @@ export default function Page() {
             {navigation.map((navItem) => (
               <li
                 key={navItem.id}
-                className=" text-xl py-4 px-9 first:border-t border-white last:border-b"
+                className="border-white px-9 py-4 text-xl first:border-t last:border-b"
               >
                 <Link
                   href={navItem.href}
@@ -39,8 +39,8 @@ export default function Page() {
           </ul>
         </nav>
       </div>
-      <div className="mt-15 lg:mt-29 overflow-x-scroll no-scrollbar @container">
-        <div className="flex gap-x-7.5 -mx-8 @min-md:mx-0 @min-md:justify-center">
+      <div className="no-scrollbar @container mt-15 overflow-x-scroll lg:mt-29">
+        <div className="-mx-8 flex gap-x-7.5 @min-md:mx-0 @min-md:justify-center">
           {logos.map(({ id, make, src }) => (
             <Link
               key={id}
@@ -53,12 +53,12 @@ export default function Page() {
                 alt={make}
                 width={82}
                 height={35}
-                className="hover:brightness-150 transition-[filter]"
+                className="transition-[filter] hover:brightness-150"
               />
             </Link>
           ))}
         </div>
       </div>
-    </div>
+    </main>
   );
 }

@@ -9,12 +9,19 @@
   --color-btn: #1e1e1e;
 }
 
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
   }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@utility scrollbar {
+  &::-webkit-scrollbar {
+    display: block;
   }
+
+  -ms-overflow-style: auto;
+  scrollbar-width: auto;
 }

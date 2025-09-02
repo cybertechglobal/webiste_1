@@ -11,7 +11,7 @@ export default function Wrapper({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className="relative bg-cover bg-center flex flex-col min-h-screen"
+      className="relative flex min-h-screen flex-col bg-cover bg-center"
       style={bgImage ? { backgroundImage: `url('${bgImage}')` } : undefined}
       role="main"
       aria-label={`${
