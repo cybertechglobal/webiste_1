@@ -1,4 +1,4 @@
-import { IconOne, IconThree, IconTwo } from "@/ui/components/icons";
+import { IconOne, IconThree, IconTwo } from "@/ui/icons/services";
 
 export const navigation = [
   {
