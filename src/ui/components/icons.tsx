@@ -1,6 +1,6 @@
-import * as React from "react";
+import { ComponentProps } from "react";
 
-export function IconOne(props: React.ComponentProps<"svg">) {
+export function IconOne(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export function IconOne(props: React.ComponentProps<"svg">) {
   );
 }
 
-export function IconTwo(props: React.ComponentProps<"svg">) {
+export function IconTwo(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ export function IconTwo(props: React.ComponentProps<"svg">) {
   );
 }
 
-export function IconThree(props: React.ComponentProps<"svg">) {
+export function IconThree(props: ComponentProps<"svg">) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
