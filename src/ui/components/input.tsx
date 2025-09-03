@@ -2,18 +2,18 @@
 
 import { cn } from "@/lib/client-utils";
 import { motion, useMotionTemplate, useMotionValue } from "motion/react";
-import * as React from "react";
+import { InputHTMLAttributes, MouseEvent, Ref, useState } from "react";
 
 export default function Input({
   className,
   type,
   ref,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & {
-  ref?: React.Ref<HTMLInputElement>;
+}: InputHTMLAttributes<HTMLInputElement> & {
+  ref?: Ref<HTMLInputElement>;
 }) {
   const radius = 100;
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -22,7 +22,7 @@ export default function Input({
     currentTarget,
     clientX,
     clientY,
-  }: React.MouseEvent<HTMLDivElement>) {
+  }: MouseEvent<HTMLDivElement>) {
     const { left, top } = currentTarget.getBoundingClientRect();
 
     mouseX.set(clientX - left);
@@ -33,22 +33,22 @@ export default function Input({
     <motion.div
       style={{
         background: useMotionTemplate`
-      radial-gradient(
-            ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
-            #4cffc0 0%,
-            transparent 80%
-          )
-        `,
+          radial-gradient(
+              ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
+              var(--color-primary-500) 0%,
+              transparent 80%
+            )
+          `,
       }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      className="group p-0.5 transition duration-300"
+      className="p-0.5 transition duration-300"
     >
       <input
         type={type}
         className={cn(
-          `shadow-input bg-card text-border flex h-10 w-full border-none px-4 py-2.5 text-sm transition duration-400 group-hover:shadow-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
+          "shadow-input bg-card text-border flex h-10 w-full border-none px-4 py-2.5 text-sm transition duration-400 focus-visible:ring-[2px] focus-visible:ring-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 in-hover:shadow-none",
           className,
         )}
         ref={ref}

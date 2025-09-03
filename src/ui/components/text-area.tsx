@@ -2,17 +2,17 @@
 
 import { cn } from "@/lib/client-utils";
 import { motion, useMotionTemplate, useMotionValue } from "motion/react";
-import * as React from "react";
+import { Ref, TextareaHTMLAttributes, useState } from "react";
 
 export default function Textarea({
   className,
   ref,
   ...props
-}: React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  ref?: React.Ref<HTMLTextAreaElement>;
+}: TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  ref?: Ref<HTMLTextAreaElement>;
 }) {
   const radius = 250;
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -32,7 +32,7 @@ export default function Textarea({
         background: useMotionTemplate`
           radial-gradient(
             ${visible ? radius + "px" : "0px"} circle at ${mouseX}px ${mouseY}px,
-            #4cffc0 0%,
+            var(--color-primary-500) 0%,
             transparent 80%
           )
         `,
@@ -40,11 +40,11 @@ export default function Textarea({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      className="group p-0.5 transition duration-300"
+      className="p-0.5 transition duration-300"
     >
       <textarea
         className={cn(
-          `shadow-input bg-card text-border flex w-full border-none px-4 py-2.5 text-sm transition duration-400 group-hover:shadow-none focus-visible:ring-[2px] focus-visible:ring-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50`,
+          "shadow-input bg-card text-border flex w-full border-none px-4 py-2.5 text-sm transition duration-400 focus-visible:ring-[2px] focus-visible:ring-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 in-hover:shadow-none",
           className,
         )}
         ref={ref}

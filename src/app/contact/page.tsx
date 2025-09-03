@@ -16,8 +16,8 @@ export default function Page() {
   return (
     <main className="relative mx-auto mt-5 mb-14 max-w-7xl grow px-4 lg:mb-15 lg:px-6">
       <GoBack />
-      <h1 className="mt-1 text-[50px]/12.5 font-medium text-white lg:mt-4">
-        Get in <span className="text-primary">touch</span>
+      <h1 className="mt-1 text-[50px]/12.5 text-[40px] font-medium text-white lg:mt-4 lg:text-[50px]/12.5">
+        Get in <span className="text-primary-500">touch</span>
       </h1>
       <div className="mt-7.5 grid gap-x-5 lg:mt-4 lg:mb-16 lg:grid-cols-2">
         <div>
@@ -41,8 +41,8 @@ export default function Page() {
                 className="max-h-[500px]"
               />
             </div>
-            <div className="mt-6 grid gap-x-5.75 overflow-hidden lg:mt-4 lg:grid-cols-2">
-              <button className="bg-primary text-btn cursor-pointer border-0 px-6 py-2.5 text-lg font-bold uppercase disabled:cursor-not-allowed disabled:opacity-50">
+            <div className="mt-6 grid gap-x-5.75 lg:mt-4 lg:grid-cols-2">
+              <button className="btn-primary px-6 py-2.5 text-lg">
                 Send a message
               </button>
             </div>
@@ -65,17 +65,17 @@ export default function Page() {
               className="mr-1"
               aria-label="Contact on viber"
             >
-              <IconViber className="text-primary" />
+              <IconViber className="text-primary-500" />
             </ExternalLink>
             <ExternalLink href="#" className="mr-1">
               <IconBrandWhatsapp
-                className="text-primary size-7 stroke-[1.75]"
+                className="text-primary-500 size-7 stroke-[1.75]"
                 aria-label="Contact on whatsapp"
               />
             </ExternalLink>
             <ExternalLink href="#" className="mr-1">
               <IconBrandTelegram
-                className="text-primary size-7 stroke-[1.75]"
+                className="text-primary-500 size-7 stroke-[1.75]"
                 aria-label="Contact on telegram"
               />
             </ExternalLink>

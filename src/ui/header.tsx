@@ -18,11 +18,11 @@ export default function Header() {
         <div className="ml-auto">
           <div className="flex items-center gap-x-2 text-sm font-light text-white">
             <div>Address name 123, City 90321</div>
-            <IconMapPinFilled className="text-primary size-3.5 shrink-0" />
+            <IconMapPinFilled className="text-primary-500 size-3.5 shrink-0" />
           </div>
           <div className="flex items-center justify-end gap-x-2 text-sm font-light text-white">
             <Link href="tel:+381 69 123 456">+381 69 123 456</Link>
-            <IconPhoneFilled className="text-primary size-3.5 shrink-0" />
+            <IconPhoneFilled className="text-primary-500 size-3.5 shrink-0" />
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ export default function Page() {
     <main className="relative grow pt-10 pb-15 sm:pt-16">
       <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center lg:px-6">
         <h1 className="text-center text-[50px]/12.5 font-medium text-white">
-          Risus quis at <span className="text-primary">nisi nunc</span>
+          Risus quis at <span className="text-primary-500">nisi nunc</span>
         </h1>
         <p className="mt-4 text-center text-white lg:mt-2">
           Eget libero venenatis integer senectus tincidunt adipiscing enim elit.

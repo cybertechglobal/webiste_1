@@ -13,8 +13,8 @@ export default function Page() {
   return (
     <main className="relative mx-auto mt-5 mb-14 max-w-7xl grow px-4 lg:mb-15 lg:px-6">
       <GoBack />
-      <h1 className="mt-1 text-[50px]/12.5 font-medium text-white lg:mt-4">
-        Our <span className="text-primary">services</span>
+      <h1 className="mt-1 text-[50px]/12.5 text-[40px] font-medium text-white lg:mt-4 lg:text-[50px]/12.5">
+        Our <span className="text-primary-500">services</span>
       </h1>
       <div className="mt-7.5 text-base/7 text-white lg:mt-4">
         <p>

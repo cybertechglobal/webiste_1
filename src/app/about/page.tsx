@@ -13,8 +13,8 @@ export default function Page() {
   return (
     <main className="relative mx-auto mt-5 mb-9 max-w-7xl grow px-4 lg:mb-11 lg:px-6">
       <GoBack />
-      <h1 className="mt-1 text-[50px]/12.5 font-medium text-white lg:mt-4">
-        Who are <span className="text-primary">we</span>?
+      <h1 className="mt-1 text-[50px]/12.5 text-[40px] font-medium text-white lg:mt-4 lg:text-[50px]/12.5">
+        Who are <span className="text-primary-500">we</span>?
       </h1>
       <div className="mt-7.5 flex flex-col gap-7.5 min-[1180px]:flex-row lg:mt-4">
         <div className="text-base/7 text-white">

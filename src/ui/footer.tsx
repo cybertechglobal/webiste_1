@@ -12,29 +12,34 @@ export default function Footer() {
         <div className="-ml-2.5 flex items-center gap-x-0.5">
           <ExternalLink
             href="https://facebook.com/"
-            className="text-primary p-2"
+            className="text-primary-500 p-2"
           >
             <IconBrandFacebook aria-hidden />
             <span className="sr-only">Facebook</span>
           </ExternalLink>
           <ExternalLink
             href="https://instagram.com/"
-            className="text-primary p-2"
+            className="text-primary-500 p-2"
           >
             <IconBrandInstagram aria-hidden />
             <span className="sr-only">Instagram</span>
           </ExternalLink>
-          <ExternalLink href="https://tiktok.com/" className="text-primary p-2">
+          <ExternalLink
+            href="https://tiktok.com/"
+            className="text-primary-500 p-2"
+          >
             <IconBrandTiktok aria-hidden />
             <span className="sr-only">Tiktok</span>
           </ExternalLink>
         </div>
         <div className="mt-6 flex items-center gap-x-2.5 justify-self-center lg:mt-0">
-          <div className="text-primary text-sm font-medium">
+          <div className="text-primary-500 text-sm font-medium">
             PIB: 1234000056
           </div>
           <div className="h-4 w-px bg-white" aria-hidden />
-          <div className="text-primary text-sm font-medium">MB: 98765432</div>
+          <div className="text-primary-500 text-sm font-medium">
+            MB: 98765432
+          </div>
         </div>
         <div className="text-sm font-light text-white lg:justify-self-end">
           Company Name &copy; All rights reserved.

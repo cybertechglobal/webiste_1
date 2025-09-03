@@ -1,7 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #4cffc0;
+  /* these could be used for some effects
+  --color-primary-50: #ebfff8;
+  --color-primary-100: #c7ffe9;
+  --color-primary-200: #a3ffda;
+  --color-primary-300: #7fffd2;
+  --color-primary-400: #66ffcc;
+  --color-primary-700: #26b383;
+  --color-primary-800: #1a805c;
+  --color-primary-900: #0f4d38;
+  */
+
+  /*This is used as primary color*/
+  --color-primary-500: #4cffc0;
+
+  /*Thos is used for button hover*/
+  --color-primary-600: #33e6a8;
+
   --color-border: #a2a2a2;
   --color-card: #363636;
   --color-subtitle: #b6b6b6;
@@ -11,6 +27,22 @@
   --shadow-input:
     0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
     0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+
+  --animate-overlayExit: overlayExit 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-overlayShow: overlayShow 000ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-contentShow: contentShow 175ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility btn-primary {
+  @apply bg-primary-500 hover:bg-primary-600 text-btn cursor-pointer font-bold uppercase transition-[colors,opacity] duration-200 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@utility btn-secondary {
+  @apply hover:border-bg hover:text-bg bg-bg cursor-pointer border border-white font-bold text-white uppercase transition-[colors,opacity] duration-200 hover:bg-white disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@utility btn-tertiary {
+  @apply hover:border-card hover:text-card cursor-pointer border border-white font-bold text-white uppercase transition-[colors,opacity] duration-200 hover:bg-white disabled:cursor-not-allowed disabled:opacity-50;
 }
 
 @utility no-scrollbar {
@@ -28,4 +60,33 @@
 
   -ms-overflow-style: auto;
   scrollbar-width: auto;
+}
+
+@keyframes overlayShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes overlayExit {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
