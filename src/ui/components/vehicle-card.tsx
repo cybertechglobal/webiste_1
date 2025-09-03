@@ -31,7 +31,7 @@ export default function VehicleCard({
           <Image
             src={imgSrc || "/vehicles-page/car.png"}
             alt={title}
-            className="size-full object-contain object-center"
+            className="size-full object-contain object-center transition-transform duration-200 group-hover:scale-110"
             height={222}
             width={296}
           />
