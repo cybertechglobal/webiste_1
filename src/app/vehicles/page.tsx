@@ -1,6 +1,6 @@
-import VehicleCard from "@/ui/components/card";
 import FiltersModal from "@/ui/components/filters-modal";
 import GoBack from "@/ui/components/go-back";
+import VehicleCard from "@/ui/components/vehicle-card";
 
 import type { Metadata } from "next";
 
@@ -111,7 +111,7 @@ const vehicleCards = [
 
 export default function Page() {
   return (
-    <main className="relative mt-5 mb-14 max-w-7xl grow px-4 md:mx-auto lg:mb-15 lg:px-6">
+    <main className="relative mt-5 mb-14 w-full max-w-7xl grow px-4 md:mx-auto lg:mb-15 lg:px-6">
       <GoBack />
       <div className="mt-1 flex w-full flex-col justify-between gap-x-4 md:flex-row md:items-center lg:mt-4">
         <h1 className="text-[40px]/10 font-medium text-white lg:text-[50px]/12.5">
@@ -123,7 +123,7 @@ export default function Page() {
       <div className="hidden text-lg text-white md:block">
         42 Vehicles found
       </div>
-      <div className="mt-10 grid gap-5 lg:mt-7.5 lg:grid-cols-2">
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-7.5">
         {vehicleCards.map(
           ({
             id,
