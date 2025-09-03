@@ -1,6 +1,7 @@
 import ExternalLink from "@/ui/components/external-link";
 import GoBack from "@/ui/components/go-back";
 import Input from "@/ui/components/input";
+import Map from "@/ui/components/map";
 import Textarea from "@/ui/components/text-area";
 import { IconViber } from "@/ui/icons/viber";
 import { IconBrandTelegram, IconBrandWhatsapp } from "@tabler/icons-react";
@@ -51,15 +52,7 @@ export default function Page() {
               </form>
             </div>
             <div className="self-end overflow-hidden">
-              <iframe
-                title="Google maps of company"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2749.9765787601254!2d20.466317525248122!3d44.81021800724598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa501a8a9f3%3A0xc6a381731628cb98!2sSt.%20Mark%20Orthodox%20Church!5e0!3m2!1sen!2srs!4v1756829733164!5m2!1sen!2srs"
-                width="588"
-                height="295"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="pt-0.75 pb-0.5 grayscale-65"
-              />
+              <Map />
               <div className="mt-6.5 flex items-center gap-x-2 pb-3">
                 <div className="mr-1 text-white">Also available on:</div>
                 <ExternalLink
