@@ -21,7 +21,7 @@ export default function FiltersModal() {
         <Dialog.Overlay className="data-[state=closed]:animate-overlayExit data-[state=open]:animate-overlayShow bg-bg/80 fixed inset-0 z-50 cursor-pointer" />
         <Dialog.Content
           aria-describedby={undefined}
-          className="data-[state=open]:animate-contentShow bg-card fixed top-1/2 left-1/2 z-50 w-[calc(100%-32px)] max-w-309.5 -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto rounded-xl p-5 ring-1 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] ring-black/5 ring-inset focus:outline-hidden md:left-1/2 lg:w-[calc(100%-48px)]"
+          className="data-[state=open]:animate-contentShow bg-card fixed top-1/2 left-1/2 z-50 w-[calc(100%-32px)] max-w-7xl -translate-1/2 transform overflow-y-auto p-5 ring-1 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] ring-black/5 ring-inset focus:outline-hidden md:left-1/2 lg:w-[calc(100%-48px)]"
         >
           <div className="flex items-center justify-between gap-x-6">
             <Dialog.Title className="text-3xl font-semibold text-white uppercase">

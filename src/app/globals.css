@@ -24,13 +24,11 @@
   --color-bg: #1c1c1c;
   --color-btn: #1e1e1e;
 
-  --shadow-input:
-    0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
-    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
-
   --animate-overlayExit: overlayExit 400ms cubic-bezier(0.16, 1, 0.3, 1);
   --animate-overlayShow: overlayShow 000ms cubic-bezier(0.16, 1, 0.3, 1);
   --animate-contentShow: contentShow 175ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  --container-7xl: 75rem;
 }
 
 @utility btn-primary {

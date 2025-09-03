@@ -43,12 +43,12 @@ export default function Input({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
-      className="p-0.5 transition duration-300"
+      className="p-0.5"
     >
       <input
         type={type}
         className={cn(
-          "shadow-input bg-card text-border flex h-10 w-full border-none px-4 py-2.5 text-sm transition duration-400 focus-visible:ring-[2px] focus-visible:ring-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 in-hover:shadow-none",
+          "bg-card placeholder:text-border flex h-10 w-full border-none px-4 py-2.5 text-white transition-[box-shadow,opacity] duration-200 focus-visible:ring-3 focus-visible:ring-white/50 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
         ref={ref}

@@ -65,7 +65,7 @@ export default function FilterCombobox({ placeholder }: FilterComboboxProps) {
       >
         <ComboboxInput
           aria-label={placeholder}
-          className="placeholder:text-border w-full bg-transparent text-base text-white focus:outline-none"
+          className="placeholder:text-subtitle w-full bg-transparent text-base text-white focus:outline-none"
           displayValue={(option: FilterOptions | null) => option?.label || ""}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
