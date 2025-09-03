@@ -40,7 +40,7 @@ export default function Page() {
                   <Textarea
                     placeholder="Your message*"
                     rows={8}
-                    className="resize-none"
+                    className="max-h-44 resize-none"
                   />
                 </div>
                 <div className="mt-6 grid gap-x-5.75 lg:mt-4 lg:grid-cols-2">
@@ -58,7 +58,7 @@ export default function Page() {
                 height="295"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="grayscale-65"
+                className="pt-0.75 pb-0.5 grayscale-65"
               />
               <div className="mt-6.5 flex items-center gap-x-2 pb-3">
                 <div className="mr-1 text-white">Also available on:</div>

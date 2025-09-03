@@ -39,8 +39,8 @@ export default function Page() {
           </ul>
         </nav>
       </div>
-      {/* offset 1px to allow outline visibility on focus */}
-      <div className="no-scrollbar @container -m-0.25 mt-15 overflow-x-scroll p-0.25 lg:mt-29">
+
+      <div className="no-scrollbar @container mt-15 overflow-x-scroll lg:mt-29">
         <div className="-mx-8 flex gap-x-7.5 @min-md:mx-0 @min-md:justify-center">
           {logos.map(({ id, make, src }) => (
             <Link

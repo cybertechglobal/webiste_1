@@ -25,47 +25,43 @@ export default function VehicleCard({
   href,
 }: VehicleCardsProps) {
   return (
-    <div className="bg-card group relative p-4">
-      <div className="flex flex-col gap-x-4 lg:flex-row">
-        <div className="flex max-w-full justify-center overflow-hidden">
+    <div className="bg-card group relative p-3.75 transition-colors">
+      <div className="flex h-full flex-col gap-x-3.5 lg:grid lg:[grid-template-columns:minmax(0,296px)_249px]">
+        <div className="flex shrink-0 justify-center overflow-hidden lg:place-self-center">
           <Image
             src={imgSrc || "/vehicles-page/placeholder.png"}
             alt={title}
             className="size-full object-contain object-center transition-transform duration-200 group-hover:scale-110"
             height={222}
             width={296}
+            loading="eager"
           />
         </div>
 
-        <div className="flex flex-col justify-between">
-          <div>
+        <div className="flex h-full grow flex-col justify-between">
+          <div className="flex grow flex-col justify-between">
             <Link href={href || "#"}>
               <span className="absolute inset-0"></span>
-              <h2 className="mt-2.5 text-xl font-medium text-white lg:mt-0">
+              <h2 className="mt-2.5 line-clamp-3 text-xl font-medium text-white lg:mt-0">
                 {title}
               </h2>
             </Link>
-            <div
-              className="text-subtitle line-clamp-1 max-w-65.5 text-lg"
-              title={desc}
-            >
-              {desc}
-            </div>
+            <div className="text-subtitle line-clamp-1 text-lg/5">{desc}</div>
           </div>
-          <div className="text-primary-500 mt-2.5 text-3xl font-bold">
+          <div className="text-primary-500 mt-2.25 text-3xl font-bold">
             {price}
           </div>
-          <div>
-            <div className="mt-3 font-medium text-white">
+          <div className="mt-3 space-y-1.75 font-medium text-white">
+            <div>
               Mileage: <span className="font-light">{mileage}</span>
             </div>
-            <div className="mt-2 font-medium text-white">
+            <div>
               Gear: <span className="font-light">{gear}</span>
             </div>
-            <div className="mt-2 font-medium text-white">
+            <div>
               Power: <span className="font-light">{power}</span>
             </div>
-            <div className="mt-2 font-medium text-white">
+            <div>
               Fuel: <span className="font-light">{fuel}</span>
             </div>
           </div>
