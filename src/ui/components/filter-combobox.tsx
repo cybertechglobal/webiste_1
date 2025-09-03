@@ -50,7 +50,7 @@ export default function FilterCombobox({ placeholder }: FilterComboboxProps) {
     query === ""
       ? filterOptions
       : filterOptions.filter((option) => {
-          return option.value.toLowerCase().includes(query.toLowerCase());
+          return option.label.toLowerCase().includes(query.toLowerCase());
         });
 
   return (

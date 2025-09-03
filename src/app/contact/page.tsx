@@ -67,15 +67,15 @@ export default function Page() {
             >
               <IconViber className="text-primary-500" />
             </ExternalLink>
-            <ExternalLink href="#" className="mr-1">
+            <ExternalLink href="#">
               <IconBrandWhatsapp
-                className="text-primary-500 size-7 stroke-[1.75]"
+                className="text-primary-500 size-6.5 stroke-[1.75]"
                 aria-label="Contact on whatsapp"
               />
             </ExternalLink>
-            <ExternalLink href="#" className="mr-1">
+            <ExternalLink href="#">
               <IconBrandTelegram
-                className="text-primary-500 size-7 stroke-[1.75]"
+                className="text-primary-500 size-6.5 stroke-[1.75]"
                 aria-label="Contact on telegram"
               />
             </ExternalLink>
