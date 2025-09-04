@@ -26,7 +26,8 @@ const schema = z.object({
       technicalData: z.object({
         fuel: z.string(),
         transmission: z.string(),
-        power: z.string().optional(),
+        power: z.string(),
+        powerUnit: z.literal(["hp", "kw"]),
       }),
       previewPhoto: z.object({
         url: z.string(),

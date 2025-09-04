@@ -36,3 +36,14 @@ export function formatMileage(mileage: number) {
   }
   return mileage + "km";
 }
+
+export function convertPower(value: number, unit: "hp" | "kw"): number {
+  const HP_TO_KW = 0.7457;
+  const KW_TO_HP = 1.341;
+
+  if (unit === "hp") {
+    return Math.round(value * HP_TO_KW);
+  } else {
+    return Math.round(value * KW_TO_HP);
+  }
+}

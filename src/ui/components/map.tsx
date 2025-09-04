@@ -16,7 +16,7 @@ export default function Map() {
       )}
       <iframe
         title="Google maps of company"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2749.9765787601254!2d20.466317525248122!3d44.81021800724598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa501a8a9f3%3A0xc6a381731628cb98!2sSt.%20Mark%20Orthodox%20Church!5e0!3m2!1sen!2srs!4v1756829733164!5m2!1sen!2srs"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2810.0355637631624!2d19.78954837625261!3d45.22684827107099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475b0e32b860fa05%3A0x18f5d0bf4a73c9f6!2sKamenjar%2083%2C%20Novi%20Sad%20404801!5e0!3m2!1sen!2srs!4v1756991742944!5m2!1sen!2srs"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         className="size-full grayscale-65"

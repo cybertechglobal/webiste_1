@@ -1,4 +1,4 @@
-import { formatMileage, formatPrice } from "@/lib/client-utils";
+import { convertPower, formatMileage, formatPrice } from "@/lib/client-utils";
 import { Vehicle } from "@/lib/data/get-vehicles";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,23 +52,30 @@ export default function VehicleCard({
           </div>
           <div className="mt-3 space-y-1.75 font-medium text-white">
             <div>
-              Mileage:{" "}
+              Mileage:&nbsp;
               <span className="font-light">
                 {mileage ? formatMileage(mileage) : "--"}
               </span>
             </div>
             <div>
-              Gear:{" "}
+              Gear:&nbsp;
               <span className="font-light capitalize">
                 {technicalData.transmission}
               </span>
             </div>
             <div>
-              Power:{" "}
-              <span className="font-light">{technicalData.power || "--"}</span>
+              <>
+                Power:&nbsp;
+                <span className="font-light">
+                  {formatPowerText(
+                    Number(technicalData.power),
+                    technicalData.powerUnit,
+                  )}
+                </span>
+              </>
             </div>
             <div>
-              Fuel:{" "}
+              Fuel:&nbsp;
               <span className="font-light capitalize">
                 {technicalData.fuel !== "no_information"
                   ? technicalData.fuel
@@ -80,4 +87,20 @@ export default function VehicleCard({
       </div>
     </div>
   );
+}
+
+function formatPowerText(power: number, powerUnit: "hp" | "kw") {
+  let powerInHp;
+  let powerInKw;
+  const convertedPower = convertPower(power, powerUnit);
+
+  if (powerUnit === "hp") {
+    powerInHp = power;
+    powerInKw = convertedPower;
+  } else if (powerUnit === "kw") {
+    powerInKw = power;
+    powerInHp = convertedPower;
+  }
+
+  return `${powerInKw} kw (${powerInHp} HP)`;
 }
