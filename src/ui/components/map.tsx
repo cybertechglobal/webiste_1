@@ -12,7 +12,7 @@ export default function Map() {
           className="absolute inset-0 animate-pulse bg-gray-300"
           aria-live="polite"
           role="status"
-        ></div>
+        />
       )}
       <iframe
         title="Google maps of company"

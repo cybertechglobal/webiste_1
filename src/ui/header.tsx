@@ -1,8 +1,11 @@
+import { getCompany } from "@/lib/company/get-company";
 import { IconMapPinFilled, IconPhoneFilled } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Header() {
+export default async function Header() {
+  const company = await getCompany();
+
   return (
     <header className="relative z-10 min-h-14 pt-5 lg:pt-10">
       <div className="px-4 lg:px-6">
@@ -18,11 +21,15 @@ export default function Header() {
           </Link>
           <div className="ml-auto">
             <div className="flex items-center gap-x-2 text-sm font-light text-white">
-              <div>Address name 123, City 90321</div>
+              <div>
+                {company?.address}, {company?.city} {company?.postalCode}
+              </div>
               <IconMapPinFilled className="text-primary-500 size-3.5 shrink-0" />
             </div>
             <div className="flex items-center justify-end gap-x-2 text-sm font-light text-white">
-              <Link href="tel:+381 69 123 456">+381 69 123 456</Link>
+              <a href={company?.phone ? `tel:${company.phone}` : ""}>
+                {company?.phone}
+              </a>
               <IconPhoneFilled className="text-primary-500 size-3.5 shrink-0" />
             </div>
           </div>

@@ -15,18 +15,15 @@ type FilterOptions = {
   value: string;
 };
 
-const filterOptions: FilterOptions[] = [
-  { label: "Option 1", value: "TEST_1" },
-  { label: "Option 2", value: "TEST_2" },
-  { label: "Option 3", value: "TEST_3" },
-  { label: "Option 4", value: "TEST_4" },
-];
-
 interface FilterComboboxProps {
   placeholder: string;
+  options?: FilterOptions[];
 }
 
-export default function FilterCombobox({ placeholder }: FilterComboboxProps) {
+export default function FilterCombobox({
+  placeholder,
+  options = [],
+}: FilterComboboxProps) {
   const [selected, setSelected] = useState<FilterOptions | null>(null);
   const [query, setQuery] = useState("");
   const comboboxRef = useRef<HTMLDivElement>(null);
@@ -48,8 +45,8 @@ export default function FilterCombobox({ placeholder }: FilterComboboxProps) {
 
   const filteredOptions =
     query === ""
-      ? filterOptions
-      : filterOptions.filter((option) => {
+      ? options
+      : options.filter((option) => {
           return option.label.toLowerCase().includes(query.toLowerCase());
         });
 

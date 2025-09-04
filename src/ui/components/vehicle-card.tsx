@@ -1,36 +1,33 @@
+import { formatMileage, formatPrice } from "@/lib/client-utils";
+import { Vehicle } from "@/lib/data/get-vehicles";
 import Image from "next/image";
 import Link from "next/link";
 
-type VehicleCardsProps = {
-  title: string;
-  desc?: string;
-  price?: string;
-  mileage?: string;
-  gear?: string;
-  power?: string;
-  fuel?: string;
-  imgSrc?: string;
-  href?: string;
-};
-
 export default function VehicleCard({
-  title,
-  desc,
-  price,
+  id,
+  make,
+  model,
+  typeName,
   mileage,
-  gear,
-  power,
-  fuel,
-  imgSrc,
-  href,
-}: VehicleCardsProps) {
+  retailPrice,
+  prices,
+  technicalData,
+  previewPhoto,
+}: Vehicle) {
+  const priceValue =
+    retailPrice ??
+    prices.find((p: { type: string; value: number }) => p.type === "retail")
+      ?.value ??
+    prices[0]?.value ??
+    null;
+
   return (
     <div className="bg-card group relative p-3.75 transition-colors">
       <div className="flex h-full flex-col gap-x-3.5 lg:grid lg:[grid-template-columns:minmax(0,296px)_249px]">
         <div className="flex shrink-0 justify-center overflow-hidden lg:place-self-center">
           <Image
-            src={imgSrc || "/vehicles-page/placeholder.png"}
-            alt={title}
+            src={previewPhoto?.url || "/vehicles-page/placeholder.png"}
+            alt={`${make} ${model}`}
             className="size-full object-contain object-center transition-transform duration-200 group-hover:scale-110"
             height={222}
             width={296}
@@ -40,29 +37,43 @@ export default function VehicleCard({
 
         <div className="flex h-full grow flex-col justify-between">
           <div className="flex grow flex-col justify-between">
-            <Link href={href || "#"}>
+            <Link href={`/vehicles/${id}`}>
               <span className="absolute inset-0"></span>
               <h2 className="mt-2.5 line-clamp-3 text-xl font-medium text-white lg:mt-0">
-                {title}
+                {make} {model}
               </h2>
             </Link>
-            <div className="text-subtitle line-clamp-1 text-lg/5">{desc}</div>
+            <div className="text-subtitle line-clamp-1 text-lg/5">
+              {typeName}
+            </div>
           </div>
           <div className="text-primary-500 mt-2.25 text-3xl font-bold">
-            {price}
+            {formatPrice(priceValue)}
           </div>
           <div className="mt-3 space-y-1.75 font-medium text-white">
             <div>
-              Mileage: <span className="font-light">{mileage}</span>
+              Mileage:{" "}
+              <span className="font-light">
+                {mileage ? formatMileage(mileage) : "--"}
+              </span>
             </div>
             <div>
-              Gear: <span className="font-light">{gear}</span>
+              Gear:{" "}
+              <span className="font-light capitalize">
+                {technicalData.transmission}
+              </span>
             </div>
             <div>
-              Power: <span className="font-light">{power}</span>
+              Power:{" "}
+              <span className="font-light">{technicalData.power || "--"}</span>
             </div>
             <div>
-              Fuel: <span className="font-light">{fuel}</span>
+              Fuel:{" "}
+              <span className="font-light capitalize">
+                {technicalData.fuel !== "no_information"
+                  ? technicalData.fuel
+                  : "--"}
+              </span>
             </div>
           </div>
         </div>

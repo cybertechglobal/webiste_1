@@ -1,3 +1,4 @@
+import { getCompany } from "@/lib/company/get-company";
 import {
   IconBrandFacebook,
   IconBrandInstagram,
@@ -5,7 +6,9 @@ import {
 } from "@tabler/icons-react";
 import ExternalLink from "./components/external-link";
 
-export default function Footer() {
+export default async function Footer() {
+  const company = await getCompany();
+
   return (
     <footer className="border-border relative w-full border-t">
       <div className="px-4 pt-2 pb-4 lg:px-6 lg:py-2">
@@ -43,7 +46,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="text-sm font-light text-white lg:justify-self-end">
-            Company Name &copy; All rights reserved.
+            {company?.fullName} &copy; All rights reserved.
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { VEHICLE_FILTERS } from "@/lib/data/static";
 import FilterCombobox from "@/ui/components/filter-combobox";
 import * as Dialog from "@radix-ui/react-dialog";
 import { IconX } from "@tabler/icons-react";
@@ -39,14 +40,26 @@ export default function FiltersModal() {
           <div className="mt-5 grid gap-x-4 gap-y-3.75 md:[grid-template-columns:repeat(4,minmax(0,284px))] lg:gap-x-5">
             <FilterCombobox placeholder="Make" />
             <FilterCombobox placeholder="Model" />
-            <FilterCombobox placeholder="Price from" />
-            <FilterCombobox placeholder="Price to" />
+            <FilterCombobox
+              placeholder="Price from"
+              options={VEHICLE_FILTERS.priceFrom}
+            />
+            <FilterCombobox
+              placeholder="Price to"
+              options={VEHICLE_FILTERS.priceTo}
+            />
           </div>
           <div className="mt-3.75 grid gap-x-4 gap-y-3.75 md:[grid-template-columns:repeat(4,minmax(0,284px))] lg:gap-x-5">
             <FilterCombobox placeholder="Gear" />
             <FilterCombobox placeholder="Fuel" />
-            <FilterCombobox placeholder="Mileage from" />
-            <FilterCombobox placeholder="Mileage to" />
+            <FilterCombobox
+              placeholder="Mileage from"
+              options={VEHICLE_FILTERS.mileageFrom}
+            />
+            <FilterCombobox
+              placeholder="Mileage to"
+              options={VEHICLE_FILTERS.mileageTo}
+            />
           </div>
 
           <div className="bg-subtitle mt-5 h-px w-full" aria-hidden />

@@ -15,3 +15,24 @@ export function getBgImage(segment: string) {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+export function formatPrice(price: number) {
+  const formatter = new Intl.NumberFormat("de-DE", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+  const formatted = formatter.format(price);
+  return `€ ${formatted}`;
+}
+
+export function formatMileage(mileage: number) {
+  if (mileage >= 1000) {
+    return (
+      new Intl.NumberFormat("en-US", {
+        minimumFractionDigits: 3,
+        maximumFractionDigits: 3,
+      }).format(mileage / 1000) + "km"
+    );
+  }
+  return mileage + "km";
+}
