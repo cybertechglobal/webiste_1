@@ -1,3 +1,5 @@
+import { IconOne, IconThree, IconTwo } from "@/ui/icons/services";
+
 export const AUTHENTICATION_COOKIE_NAME = "session";
 export const AUTOHOUSE_ID_COOKIE_NAME = "aid";
 export const VEHICLES_PER_PAGE = 8;
@@ -25,7 +27,7 @@ export type FiltersState = {
   mileageTo: FilterOptions | null;
 };
 
-export const initialFilters = {
+export const initialFilters: FiltersState = {
   make: null,
   model: null,
   priceFrom: null,
@@ -35,8 +37,6 @@ export const initialFilters = {
   mileageFrom: null,
   mileageTo: null,
 };
-
-import { IconOne, IconThree, IconTwo } from "@/ui/icons/services";
 
 export const navigation = [
   {

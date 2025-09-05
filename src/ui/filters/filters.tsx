@@ -15,7 +15,7 @@ import { useState } from "react";
 import SelectedFilters from "./selected-filters";
 
 export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
-  const [filters, setFilters] = useState<FiltersState>(initialFilters);
+  const [filters, setFilters] = useState(initialFilters);
   const [modelOptions, setModelOptions] = useState<FilterOptions[] | null>([]);
   const [loading, setLoading] = useState(false);
 
@@ -47,7 +47,7 @@ export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
           <Dialog.Overlay className="data-[state=closed]:animate-overlayExit data-[state=open]:animate-overlayShow bg-bg/80 fixed inset-0 z-50 cursor-pointer" />
           <Dialog.Content
             aria-describedby={undefined}
-            className="data-[state=open]:animate-contentShow bg-card fixed top-1/2 left-1/2 z-50 max-h-[95vh] w-[calc(100%-32px)] max-w-7xl -translate-1/2 transform overflow-y-auto p-5 shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] md:left-1/2 lg:w-[calc(100%-48px)]"
+            className="data-[state=open]:animate-contentShow bg-card fixed top-1/2 left-1/2 z-50 max-h-[95vh] w-[calc(100%-32px)] max-w-7xl -translate-1/2 transform overflow-y-auto p-5 md:left-1/2 lg:w-[calc(100%-48px)]"
           >
             <div className="flex items-center justify-between gap-x-6">
               <Dialog.Title className="text-3xl font-semibold text-white uppercase">

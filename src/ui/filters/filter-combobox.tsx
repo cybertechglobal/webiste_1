@@ -1,5 +1,6 @@
 "use client";
 
+import { FilterOptions } from "@/lib/definitions";
 import {
   Combobox,
   ComboboxButton,
@@ -9,11 +10,6 @@ import {
 } from "@headlessui/react";
 import { IconArrowDown } from "@tabler/icons-react";
 import { useState } from "react";
-
-type FilterOptions = {
-  label: string;
-  value: string;
-};
 
 type FilterComboboxProps = {
   placeholder: string;
