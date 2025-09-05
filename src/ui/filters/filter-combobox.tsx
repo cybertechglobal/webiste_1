@@ -55,7 +55,7 @@ export default function FilterCombobox({
           <ComboboxButton className="block h-10 cursor-pointer px-2.75">
             <IconArrowDown
               strokeWidth={3}
-              className="text-subtitle size-4.5 transition-transform duration-300 group-hover:text-white in-data-open:rotate-180"
+              className="text-subtitle size-4.5 transition-[rotate] duration-300 group-hover:text-white in-data-open:rotate-180"
             />
           </ComboboxButton>
         </div>

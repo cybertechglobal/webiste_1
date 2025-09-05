@@ -17,13 +17,13 @@ export default function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
     null;
 
   return (
-    <div className="bg-card group relative p-3.75 transition-colors">
+    <div className="bg-card group relative p-3.75">
       <div className="grid h-full gap-x-3.5 sm:[grid-template-rows:1fr_min-content] lg:[grid-template-columns:minmax(0,296px)_249px] lg:grid-rows-1">
         <div className="shrink-0 overflow-hidden lg:place-self-center">
           <Image
             src={vehicle.previewPhoto?.url || "/vehicles-page/placeholder.png"}
             alt={`${vehicle.make} ${vehicle.model}`}
-            className="size-full object-contain object-center transition-transform duration-200 group-hover:scale-110 sm:object-cover lg:object-contain"
+            className="size-full object-contain object-center transition-[scale] duration-200 group-hover:scale-110 sm:object-cover lg:object-contain"
             height={222}
             width={296}
             loading="eager"

@@ -87,7 +87,7 @@ export default function SelectedFilters({
       })}
       <Link
         href="?page=1"
-        className="ml-2 text-sm font-medium text-white decoration-white underline-offset-[3px] transition-all hover:underline"
+        className="ml-2 text-sm font-medium text-white decoration-white underline-offset-[3px] hover:underline"
         onClick={handleResetFilters}
       >
         Reset Filters

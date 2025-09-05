@@ -53,24 +53,30 @@ export default function Page() {
             </div>
             <div className="self-end overflow-hidden">
               <Map />
-              <div className="mt-6.5 flex items-center gap-x-2 pb-3">
-                <div className="mr-1 text-white">Also available on:</div>
+              <div className="mt-3.5 flex items-center pb-2">
+                <div className="mr-2 text-white">Also available on:</div>
                 <ExternalLink
                   href="#"
-                  className="p-0.5"
+                  className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
                   aria-label="Contact on viber"
                 >
-                  <IconViber className="text-primary-500" />
+                  <IconViber />
                 </ExternalLink>
-                <ExternalLink href="#">
+                <ExternalLink
+                  href="#"
+                  className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
+                >
                   <IconBrandWhatsapp
-                    className="text-primary-500 size-7 stroke-[1.75]"
+                    className="size-7 stroke-[1.75]"
                     aria-label="Contact on whatsapp"
                   />
                 </ExternalLink>
-                <ExternalLink href="#">
+                <ExternalLink
+                  href="#"
+                  className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
+                >
                   <IconBrandTelegram
-                    className="text-primary-500 size-7 stroke-[1.75]"
+                    className="size-7 stroke-[1.75]"
                     aria-label="Contact on telegram"
                   />
                 </ExternalLink>

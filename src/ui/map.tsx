@@ -6,7 +6,7 @@ export default function Map() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="relative aspect-[1.13] -translate-y-0.5 lg:aspect-[2] lg:h-[290px]">
+    <div className="relative aspect-[1.13] lg:aspect-[2] lg:h-[290px]">
       {!loaded && (
         <div
           className="absolute inset-0 animate-pulse bg-gray-300"

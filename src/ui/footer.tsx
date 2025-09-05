@@ -16,21 +16,21 @@ export default async function Footer() {
           <div className="-ml-2.5 flex items-center gap-x-0.5">
             <ExternalLink
               href="https://facebook.com/"
-              className="text-primary-500 p-2"
+              className="text-primary-500 hover:text-primary-700 p-2 transition-colors"
             >
               <IconBrandFacebook aria-hidden />
               <span className="sr-only">Facebook</span>
             </ExternalLink>
             <ExternalLink
               href="https://instagram.com/"
-              className="text-primary-500 p-2"
+              className="text-primary-500 hover:text-primary-700 p-2 transition-colors"
             >
               <IconBrandInstagram aria-hidden />
               <span className="sr-only">Instagram</span>
             </ExternalLink>
             <ExternalLink
               href="https://tiktok.com/"
-              className="text-primary-500 p-2"
+              className="text-primary-500 hover:text-primary-700 p-2 transition-colors"
             >
               <IconBrandTiktok aria-hidden />
               <span className="sr-only">Tiktok</span>

@@ -9,7 +9,7 @@ export default function GoBackButton() {
       prefetch={false}
     >
       <IconArrowLeft />
-      <div className="text-lg font-medium transition-transform duration-200 group-hover:translate-x-0.5">
+      <div className="text-lg font-medium transition-[translate] duration-200 group-hover:translate-x-0.5">
         Go back
       </div>
     </Link>

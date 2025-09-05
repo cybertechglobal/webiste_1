@@ -163,7 +163,7 @@ export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
                       }),
                     },
                   }}
-                  className="btn-primary flex h-11 items-center justify-center text-lg md:col-start-4"
+                  className="btn-primary hover:bg-primary-600 flex h-11 items-center justify-center text-lg md:col-start-4"
                 >
                   Apply filters
                 </Link>
