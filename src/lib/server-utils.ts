@@ -1,6 +1,5 @@
-import { cookies } from "next/headers";
 import { z } from "zod";
-import { AUTHENTICATION_COOKIE_NAME } from "./definitions";
+import { SearchParams } from "./definitions";
 
 export function isProduction(): boolean {
   return process.env.APP_ENVIRONMENT === "production";
@@ -22,6 +21,7 @@ export async function post(
       ...headers,
     },
     body: typeof body === "string" ? body : JSON.stringify(body),
+    cache: "force-cache",
   });
 }
 
@@ -30,14 +30,10 @@ export async function fetchServerSide<T>(
   schema: z.ZodType<T>,
   options?: RequestInit,
 ): Promise<T | Response> {
-  const cookieStore = await cookies();
-  const bearer = cookieStore.get(AUTHENTICATION_COOKIE_NAME)?.value || "";
-
   const url = new URL(endpoint, process.env.BE_APP_URL);
 
   const baseHeaders = {
     Accept: "application/json",
-    Authorization: `Bearer ${bearer}`,
   } as HeadersInit;
 
   const baseOptions = options;
@@ -71,4 +67,24 @@ export async function fetchServerSide<T>(
   } else {
     return response;
   }
+}
+
+/**
+ * Convert SearchParams from NEXT Page prop to URLSearchParams object.
+ */
+export function toURLSearchParams(params: SearchParams): URLSearchParams {
+  const searchParams = new URLSearchParams();
+
+  for (const [key, value] of Object.entries(params)) {
+    if (typeof value === "string") {
+      searchParams.append(key, value);
+      continue;
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((v) => searchParams.append(key, v));
+    }
+  }
+
+  return searchParams;
 }

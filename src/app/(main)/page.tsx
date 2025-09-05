@@ -1,4 +1,4 @@
-import { logos, navigation } from "@/lib/data/static";
+import { logos, navigation } from "@/lib/definitions";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";

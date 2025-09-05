@@ -1,9 +1,9 @@
 import ExternalLink from "@/ui/components/external-link";
-import GoBack from "@/ui/components/go-back";
+import GoBackButton from "@/ui/components/go-back-button";
 import Input from "@/ui/components/input";
-import Map from "@/ui/components/map";
 import Textarea from "@/ui/components/text-area";
 import { IconViber } from "@/ui/icons/viber";
+import Map from "@/ui/map";
 import { IconBrandTelegram, IconBrandWhatsapp } from "@tabler/icons-react";
 import type { Metadata } from "next";
 
@@ -18,7 +18,7 @@ export default function Page() {
     <main className="relative grow">
       <div className="mt-5 mb-14 px-4 lg:mb-15 lg:px-6">
         <div className="mx-auto max-w-7xl">
-          <GoBack />
+          <GoBackButton />
           <h1 className="mt-1 text-[50px]/12.5 text-[40px] font-medium text-white lg:mt-4 lg:text-[50px]/12.5">
             Get in <span className="text-primary-500">touch</span>
           </h1>
@@ -57,20 +57,20 @@ export default function Page() {
                 <div className="mr-1 text-white">Also available on:</div>
                 <ExternalLink
                   href="#"
-                  className="mr-1"
+                  className="p-0.5"
                   aria-label="Contact on viber"
                 >
                   <IconViber className="text-primary-500" />
                 </ExternalLink>
                 <ExternalLink href="#">
                   <IconBrandWhatsapp
-                    className="text-primary-500 size-6.5 stroke-[1.75]"
+                    className="text-primary-500 size-7 stroke-[1.75]"
                     aria-label="Contact on whatsapp"
                   />
                 </ExternalLink>
                 <ExternalLink href="#">
                   <IconBrandTelegram
-                    className="text-primary-500 size-6.5 stroke-[1.75]"
+                    className="text-primary-500 size-7 stroke-[1.75]"
                     aria-label="Contact on telegram"
                   />
                 </ExternalLink>

@@ -1,7 +1,7 @@
 import { IconArrowLeft } from "@tabler/icons-react";
 import Link from "next/link";
 
-export default function GoBack() {
+export default function GoBackButton() {
   return (
     <Link
       href="/"

@@ -4,7 +4,7 @@ import { getBgImage } from "@/lib/client-utils";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
-export default function Wrapper({ children }: { children: ReactNode }) {
+export default function LayoutWrapper({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const segment = pathname.split("/")[1] || "home";
   const bgImage = getBgImage(segment);

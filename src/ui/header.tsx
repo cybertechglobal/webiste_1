@@ -1,4 +1,4 @@
-import { getCompany } from "@/lib/company/get-company";
+import { getCompany } from "@/lib/data/get-company";
 import { IconMapPinFilled, IconPhoneFilled } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";

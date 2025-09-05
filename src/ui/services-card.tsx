@@ -6,7 +6,7 @@ type CardProps = {
   body: string;
 };
 
-export default function Card({ title, Icon, body }: CardProps) {
+export default function ServicesCard({ title, Icon, body }: CardProps) {
   return (
     <div className="bg-card px-4.5 py-5.5">
       <div className="mx-auto mt-3.5 w-fit">

@@ -1,5 +1,5 @@
-import { logos } from "@/lib/data/static";
-import GoBack from "@/ui/components/go-back";
+import { DISPLAY_OUR_PARTNERS, partners } from "@/lib/definitions";
+import GoBackButton from "@/ui/components/go-back-button";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -14,7 +14,7 @@ export default function Page() {
     <main className="relative grow">
       <div className="mt-5 mb-9 px-4 lg:mb-11 lg:px-6">
         <div className="mx-auto max-w-7xl">
-          <GoBack />
+          <GoBackButton />
           <h1 className="mt-1 text-[50px]/12.5 text-[40px] font-medium text-white lg:mt-4 lg:text-[50px]/12.5">
             Who are <span className="text-primary-500">we</span>?
           </h1>
@@ -43,35 +43,29 @@ export default function Page() {
               width={588}
               height={273}
               className="max-h-[273px]"
+              loading="eager"
             />
           </div>
-          <h2 className="mt-7.5 text-3xl font-medium text-white lg:mt-10">
-            Our partners:
-          </h2>
-          <div className="no-scrollbar md:scrollbar mt-7.5 flex gap-x-7.5 overflow-x-scroll pb-5">
-            {logos.map(({ id, make, src }) => (
-              <Image
-                key={id}
-                src={src}
-                alt={make}
-                width={82}
-                height={35}
-                className="shrink-0 select-none md:select-auto"
-                draggable={false}
-              />
-            ))}
-            {logos.map(({ id, make, src }) => (
-              <Image
-                key={id}
-                src={src}
-                alt={make}
-                width={82}
-                height={35}
-                className="shrink-0 select-none md:select-auto"
-                draggable={false}
-              />
-            ))}
-          </div>
+          {DISPLAY_OUR_PARTNERS && (
+            <>
+              <h2 className="mt-7.5 text-3xl font-medium text-white lg:mt-10">
+                Our partners:
+              </h2>
+              <div className="no-scrollbar md:scrollbar mt-7.5 flex gap-x-7.5 overflow-x-scroll pb-5">
+                {partners.map(({ id, make, src }) => (
+                  <Image
+                    key={id}
+                    src={src}
+                    alt={make}
+                    width={82}
+                    height={35}
+                    className="shrink-0 select-none md:select-auto"
+                    draggable={false}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </main>

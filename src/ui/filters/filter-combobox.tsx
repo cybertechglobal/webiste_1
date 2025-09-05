@@ -15,64 +15,69 @@ type FilterOptions = {
   value: string;
 };
 
-interface FilterComboboxProps {
+type FilterComboboxProps = {
   placeholder: string;
-  options?: FilterOptions[];
-}
+  options: FilterOptions[] | null;
+  selected: FilterOptions | null;
+  onChange: (value: FilterOptions | null) => void;
+  disabled?: boolean;
+};
 
 export default function FilterCombobox({
   placeholder,
   options = [],
+  selected,
+  onChange,
+  disabled = false,
 }: FilterComboboxProps) {
-  const [selected, setSelected] = useState<FilterOptions | null>(null);
   const [query, setQuery] = useState("");
 
   const filteredOptions =
     query === ""
       ? options
-      : options.filter((option) => {
+      : options?.filter((option) => {
           return option.label.toLowerCase().includes(query.toLowerCase());
         });
 
   return (
     <Combobox
       value={selected}
-      onChange={setSelected}
+      onChange={onChange}
       onClose={() => setQuery("")}
+      virtual={{ options: filteredOptions || [] }}
+      disabled={disabled}
     >
       <div className="relative">
         <ComboboxInput
           aria-label={placeholder}
-          className="placeholder:text-subtitle bg-card border-subtitle ring-subtitle h-10 w-full items-center justify-between border pr-0.5 pl-4 text-white transition-[border-color,box-shadow] focus-within:border-white focus-within:ring-3 focus-within:ring-white/50 focus-within:outline-none"
+          className="placeholder:text-subtitle bg-card outline-subtitle border-subtitle h-10 w-full border pr-0.5 pl-4 text-white outline-none data-disabled:cursor-not-allowed data-disabled:opacity-50 data-focus:border-white"
           displayValue={(option: FilterOptions | null) => option?.label || ""}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
         />
-        <div className="absolute top-1/2 right-2 -translate-y-1/2">
-          <ComboboxButton className="block cursor-pointer p-2">
+        <div className="group absolute inset-y-0 right-1.25">
+          <ComboboxButton className="block h-10 cursor-pointer px-2.75">
             <IconArrowDown
               strokeWidth={3}
-              className="text-subtitle size-4.5 transition-transform duration-300 in-data-open:rotate-180"
+              className="text-subtitle size-4.5 transition-transform duration-300 group-hover:text-white in-data-open:rotate-180"
             />
           </ComboboxButton>
         </div>
       </div>
       <ComboboxOptions
-        anchor={{
-          to: "bottom start",
-          gap: "8px",
-        }}
-        className="border-subtitle bg-card left-15 z-60 max-h-56 w-(--input-width) overflow-y-auto border py-1 empty:invisible"
+        anchor={{ to: "bottom", gap: 8, padding: 16 }}
+        className="border-subtitle bg-card z-60 max-h-56 w-(--input-width) overflow-y-auto border py-1 empty:invisible"
+        onWheel={(e) => e.stopPropagation()}
       >
-        {filteredOptions.map((option) => (
+        {({ option }) => (
           <ComboboxOption
             key={option.value}
             value={option}
-            className="text-border hover:bg-bg/80 data-focus:bg-bg/70 cursor-pointer px-4 py-2 text-sm"
+            className="text-border hover:bg-bg/80 data-focus:bg-bg/70 w-full cursor-pointer px-4 py-2 text-sm"
           >
             {option.label}
           </ComboboxOption>
-        ))}
+        )}
       </ComboboxOptions>
     </Combobox>
   );

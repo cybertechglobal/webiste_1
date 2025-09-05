@@ -1,13 +1,7 @@
 "use server";
 
-import { isProduction, post } from "@/lib/server-utils";
-import { ResponseCookie } from "next/dist/compiled/@edge-runtime/cookies";
-import { cookies } from "next/headers";
+import { post } from "@/lib/server-utils";
 import z from "zod";
-import {
-  AUTHENTICATION_COOKIE_NAME,
-  AUTOHOUSE_ID_COOKIE_NAME,
-} from "./definitions";
 
 const schema = z.object({
   email: z.email(),
@@ -39,26 +33,5 @@ export async function login() {
   const payload: { token: string; user: { autoHouses: { id: string }[] } } =
     await response.json();
 
-  const cookieStore = await cookies();
-
-  const commonCookieOptions: Partial<ResponseCookie> = {
-    httpOnly: true,
-    maxAge: 3 * 60 * 60,
-    sameSite: "lax",
-    secure: isProduction(),
-  };
-
-  cookieStore.set({
-    name: AUTHENTICATION_COOKIE_NAME,
-    value: payload.token,
-    ...commonCookieOptions,
-  });
-
-  cookieStore.set({
-    name: AUTOHOUSE_ID_COOKIE_NAME,
-    value: payload.user.autoHouses[0].id,
-    ...commonCookieOptions,
-  });
-
-  return { id: payload.user.autoHouses[0] };
+  return { token: payload.token, id: payload.user.autoHouses[0].id };
 }

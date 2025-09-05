@@ -1,10 +1,7 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import {
-  AUTHENTICATION_COOKIE_NAME,
-  AUTOHOUSE_ID_COOKIE_NAME,
-} from "../definitions";
+import { VEHICLES_PER_PAGE } from "../definitions";
+import { login } from "../login";
 import { fetchServerSide } from "../server-utils";
 
 const schema = z.object({
@@ -39,31 +36,64 @@ const schema = z.object({
 export type Vehicles = z.infer<typeof schema>;
 export type Vehicle = z.infer<typeof schema>["results"][number];
 
+function filterSearchParams(params: URLSearchParams): URLSearchParams {
+  const allowedKeys = [
+    "make",
+    "model",
+    "priceFrom",
+    "priceTo",
+    "transmission",
+    "fuel",
+    "mileageFrom",
+    "mileageTo",
+  ];
+  const result = new URLSearchParams(params);
+
+  const keys = Array.from(result.keys());
+
+  for (const key of keys) {
+    if (!allowedKeys.includes(key)) {
+      result.delete(key);
+    }
+  }
+
+  return result;
+}
+
 export async function getVehicles(
-  searchParams?: URLSearchParams,
+  searchParams: URLSearchParams,
 ): Promise<Vehicles | null> {
-  const cookieStore = await cookies();
-  const autoHouseId = cookieStore.get(AUTOHOUSE_ID_COOKIE_NAME)?.value;
-  const bearer = cookieStore.get(AUTHENTICATION_COOKIE_NAME)?.value;
+  const { token: bearer, id: autoHouseId } = await login();
 
   if (!bearer || !autoHouseId) {
     return null;
   }
 
+  const page = searchParams.get("page");
+  const limit = VEHICLES_PER_PAGE;
+
+  searchParams = filterSearchParams(searchParams);
+
   const response = await fetchServerSide<Vehicles>(
-    // `v1/auto-houses/${autoHouseId}/vehicles?${searchParams.toString()}`,
-    `v1/auto-houses/${autoHouseId}/vehicles`,
+    `v1/auto-houses/${autoHouseId}/vehicles${searchParams ? "?" + searchParams.toString() : ""}`,
     schema,
     {
       next: {
         tags: ["vehicles"],
         revalidate: 60 * 60,
       },
+      headers: {
+        Authorization: `Bearer ${bearer}`,
+        page: page || String(1),
+        limit: String(limit),
+      },
     },
   );
 
   if (response instanceof Response) {
-    redirect("/unauthorized");
+    const result = await response.json();
+    if (result.status === 401) redirect("/unauthorized");
+    return null;
   }
 
   return response;

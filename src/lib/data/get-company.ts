@@ -1,10 +1,6 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import {
-  AUTHENTICATION_COOKIE_NAME,
-  AUTOHOUSE_ID_COOKIE_NAME,
-} from "../definitions";
+import { login } from "../login";
 import { fetchServerSide } from "../server-utils";
 
 const schema = z.object({
@@ -21,9 +17,7 @@ const schema = z.object({
 export type Company = z.infer<typeof schema>;
 
 export async function getCompany(): Promise<Company | null> {
-  const cookieStore = await cookies();
-  const autoHouseId = cookieStore.get(AUTOHOUSE_ID_COOKIE_NAME)?.value;
-  const bearer = cookieStore.get(AUTHENTICATION_COOKIE_NAME)?.value;
+  const { token: bearer, id: autoHouseId } = await login();
 
   if (!bearer || !autoHouseId) {
     return null;
@@ -36,6 +30,9 @@ export async function getCompany(): Promise<Company | null> {
       next: {
         tags: ["company"],
         revalidate: 60 * 60,
+      },
+      headers: {
+        Authorization: `Bearer ${bearer}`,
       },
     },
   );

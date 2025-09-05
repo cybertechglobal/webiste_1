@@ -47,3 +47,19 @@ export function convertPower(value: number, unit: "hp" | "kw"): number {
     return Math.round(value * KW_TO_HP);
   }
 }
+
+export function formatPowerText(power: number, powerUnit: "hp" | "kw") {
+  let powerInHp;
+  let powerInKw;
+  const convertedPower = convertPower(power, powerUnit);
+
+  if (powerUnit === "hp") {
+    powerInHp = power;
+    powerInKw = convertedPower;
+  } else if (powerUnit === "kw") {
+    powerInKw = power;
+    powerInHp = convertedPower;
+  }
+
+  return `${powerInKw} kW (${powerInHp} HP)`;
+}
