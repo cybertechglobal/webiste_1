@@ -30,7 +30,7 @@ export default function Page() {
                 <Link
                   href={navItem.href}
                   prefetch={false}
-                  className="text-white hover:text-white/80"
+                  className="text-white hover:text-gray-300"
                 >
                   {navItem.label}
                 </Link>

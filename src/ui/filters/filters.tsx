@@ -55,7 +55,7 @@ export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
               </Dialog.Title>
 
               <Dialog.Close
-                className="-mr-2 flex cursor-pointer items-center justify-center p-1.5 text-white"
+                className="-mr-2 flex cursor-pointer items-center justify-center p-1.5 text-white hover:text-gray-300"
                 aria-label="Close Modal"
               >
                 <IconX className="size-6.5" />
