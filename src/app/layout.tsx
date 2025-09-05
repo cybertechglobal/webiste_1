@@ -1,6 +1,6 @@
 import Footer from "@/ui/footer";
 import Header from "@/ui/header";
-import Wrapper from "@/ui/wrapper";
+import LayoutWrapper from "@/ui/layout-wrapper";
 import type { Metadata } from "next";
 import { Chakra_Petch } from "next/font/google";
 import "./globals.css";
@@ -22,12 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${chakraPetch.className} bg-black antialiased`}>
-        <Wrapper>
+      <body className={`${chakraPetch.className} bg-bg antialiased`}>
+        <LayoutWrapper>
           <Header />
           {children}
           <Footer />
-        </Wrapper>
+        </LayoutWrapper>
       </body>
     </html>
   );
