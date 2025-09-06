@@ -1,4 +1,7 @@
+import { getMakes } from "@/lib/data/get-makes";
+import { getVehicles } from "@/lib/data/get-vehicles";
 import { SearchParamsPromise } from "@/lib/definitions";
+import { toURLSearchParams } from "@/lib/server-utils";
 import GoBackButton from "@/ui/components/go-back-button";
 import Vehicles from "@/ui/vehicles/vehicles";
 import VehiclesSkeleton from "@/ui/vehicles/vehicles-skeleton";
@@ -18,6 +21,10 @@ export default async function Page({
   searchParams: SearchParamsPromise;
 }) {
   const params = await searchParams;
+  const newParams = toURLSearchParams(params);
+  newParams.set("page", "1");
+  const vehicles = await getVehicles(newParams);
+  const makes = await getMakes();
 
   return (
     <main className="relative grow">
@@ -25,7 +32,11 @@ export default async function Page({
         <div className="max-w-7xl md:mx-auto">
           <GoBackButton />
           <Suspense fallback={<VehiclesSkeleton />}>
-            <Vehicles searchParams={params} />
+            <Vehicles
+              initialVehicles={vehicles ?? { count: 0, results: [] }}
+              searchParams={params}
+              makes={makes}
+            />
           </Suspense>
         </div>
       </div>

@@ -13,7 +13,6 @@ export default function LayoutWrapper({ children }: { children: ReactNode }) {
     <div
       className="relative flex min-h-screen flex-col bg-cover bg-center"
       style={bgImage ? { backgroundImage: `url('${bgImage}')` } : undefined}
-      role="main"
       aria-label={`${
         segment.charAt(0).toUpperCase() + segment.slice(1)
       } page background`}

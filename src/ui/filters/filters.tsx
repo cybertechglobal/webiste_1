@@ -11,23 +11,34 @@ import FilterCombobox from "@/ui/filters/filter-combobox";
 import * as Dialog from "@radix-ui/react-dialog";
 import { IconX } from "@tabler/icons-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import SelectedFilters from "./selected-filters";
 
 export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
   const [filters, setFilters] = useState(initialFilters);
   const [modelOptions, setModelOptions] = useState<FilterOptions[] | null>([]);
-  const [loading, setLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const handleFilterChange = (
     filterKey: keyof FiltersState,
     value: FilterOptions | null,
   ) => {
     setFilters((prev) => ({ ...prev, [filterKey]: value }));
+    if (filterKey !== "make") return;
+    if (!value) {
+      setModelOptions([]);
+      return;
+    }
+
+    startTransition(async () => {
+      const models = await getModels(value.value);
+      setModelOptions(models);
+    });
   };
 
   const handleResetFilters = () => {
     setFilters(initialFilters);
+    setModelOptions([]);
   };
 
   return (
@@ -70,12 +81,6 @@ export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
                 onChange={async (value) => {
                   handleFilterChange("make", value);
                   handleFilterChange("model", null);
-                  if (value) {
-                    setLoading(true);
-                    const models = await getModels(value.value);
-                    setModelOptions(models);
-                    setLoading(false);
-                  }
                 }}
               />
               <FilterCombobox
@@ -83,7 +88,7 @@ export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
                 options={modelOptions}
                 selected={filters.model}
                 onChange={(value) => handleFilterChange("model", value)}
-                disabled={loading}
+                disabled={isPending}
               />
               <FilterCombobox
                 placeholder="Price from"
@@ -128,15 +133,12 @@ export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
             <div className="bg-subtitle mt-5 h-px w-full" aria-hidden />
 
             <div className="mt-5 ml-auto grid gap-5 md:[grid-template-columns:repeat(4,minmax(0,284px))]">
-              <Dialog.Trigger asChild>
-                <Link
-                  href="/vehicles?page=1"
-                  className="btn-tertiary flex h-11 items-center justify-center text-lg md:col-start-3"
-                  onClick={handleResetFilters}
-                >
-                  Reset filters
-                </Link>
-              </Dialog.Trigger>
+              <button
+                className="btn-tertiary flex h-11 items-center justify-center text-lg md:col-start-3"
+                onClick={handleResetFilters}
+              >
+                Reset filters
+              </button>
               <Dialog.Trigger asChild>
                 <Link
                   href={{

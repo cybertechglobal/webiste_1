@@ -14,17 +14,17 @@ export type SearchParams = { [key: string]: string | string[] | undefined };
 export type FilterOptions = {
   label: string;
   value: string;
-};
+} | null;
 
 export type FiltersState = {
-  make: FilterOptions | null;
-  model: FilterOptions | null;
-  priceFrom: FilterOptions | null;
-  priceTo: FilterOptions | null;
-  transmission: FilterOptions | null;
-  fuel: FilterOptions | null;
-  mileageFrom: FilterOptions | null;
-  mileageTo: FilterOptions | null;
+  make: FilterOptions;
+  model: FilterOptions;
+  priceFrom: FilterOptions;
+  priceTo: FilterOptions;
+  transmission: FilterOptions;
+  fuel: FilterOptions;
+  mileageFrom: FilterOptions;
+  mileageTo: FilterOptions;
 };
 
 export const initialFilters: FiltersState = {

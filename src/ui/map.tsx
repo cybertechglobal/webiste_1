@@ -8,11 +8,7 @@ export default function Map() {
   return (
     <div className="relative aspect-[1.13] lg:aspect-[2] lg:h-[290px]">
       {!loaded && (
-        <div
-          className="absolute inset-0 animate-pulse bg-gray-300"
-          aria-live="polite"
-          role="status"
-        />
+        <div className="absolute inset-0 animate-pulse bg-gray-300" />
       )}
       <iframe
         title="Google maps of company"
