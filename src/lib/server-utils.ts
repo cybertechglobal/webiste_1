@@ -11,7 +11,7 @@ export async function post(
   headers?: RequestInit["headers"],
 ): Promise<Response> {
   headers = headers ?? {};
-  const url = new URL(endpoint, process.env.BE_APP_URL);
+  const url = new URL(endpoint, process.env.NEXT_PUBLIC_BE_APP_URL);
 
   return fetch(url, {
     method: "POST",
@@ -30,7 +30,7 @@ export async function fetchServerSide<T>(
   schema: z.ZodType<T>,
   options?: RequestInit,
 ): Promise<T | Response> {
-  const url = new URL(endpoint, process.env.BE_APP_URL);
+  const url = new URL(endpoint, process.env.NEXT_PUBLIC_BE_APP_URL);
 
   const baseHeaders = {
     Accept: "application/json",

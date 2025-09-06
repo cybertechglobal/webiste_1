@@ -14,7 +14,7 @@ type SelectedFiltersProps = {
   handleResetFilters: () => void;
   handleFilterChange: (
     filterKey: keyof FiltersState,
-    value: FilterOptions | null,
+    value: FilterOptions,
   ) => void;
 };
 

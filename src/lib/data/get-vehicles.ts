@@ -69,13 +69,13 @@ export async function getVehicles(
     return null;
   }
 
-  const page = searchParams.get("page");
+  const page = searchParams?.get("page");
   const limit = VEHICLES_PER_PAGE;
 
   searchParams = filterSearchParams(searchParams);
 
   const response = await fetchServerSide<Vehicles>(
-    `v1/auto-houses/${autoHouseId}/vehicles${searchParams ? "?" + searchParams.toString() : ""}`,
+    `/v1/auto-houses/${autoHouseId}/vehicles${searchParams ? "?" + searchParams.toString() : ""}`,
     schema,
     {
       next: {

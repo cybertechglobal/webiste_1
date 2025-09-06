@@ -1,43 +1,71 @@
-import { getVehicles } from "@/lib/data/get-vehicles";
-import { SearchParams, VEHICLES_PER_PAGE } from "@/lib/definitions";
+"use client";
+
+import { getVehicles, Vehicles as VehiclesType } from "@/lib/data/get-vehicles";
+import {
+  FilterOptions,
+  SearchParams,
+  VEHICLES_PER_PAGE,
+} from "@/lib/definitions";
 import { toURLSearchParams } from "@/lib/server-utils";
-import FiltersWrapper from "../filters/filters-wrapper";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+  useTransition,
+} from "react";
+import Filters from "../filters/filters";
 import LoadMoreButton from "./load-more-button";
 import VehicleCard from "./vehicle-card";
+import VehicleSkeleton from "./vehicle-skeleton";
 
-export default async function Vehicles({
-  searchParams,
-}: {
+type VehiclesProps = {
   searchParams: SearchParams;
-}) {
-  const params = toURLSearchParams(searchParams);
-  const page = parseInt(params.get("page") || "1", 10);
-  const range = Array.from({ length: page }, (_, i) => i + 1);
+  initialVehicles: VehiclesType;
+  makes: FilterOptions[] | null;
+};
 
-  const pagedVehicles = await Promise.all(
-    range.map(async (page) => {
-      const newParams = new URLSearchParams(params);
-      newParams.set("page", page.toString());
-      return await getVehicles(newParams);
-    }),
+export default function Vehicles({
+  searchParams,
+  initialVehicles,
+  makes,
+}: VehiclesProps) {
+  const [page, setPage] = useState(1);
+  const [vehicles, setVehicles] = useState(initialVehicles.results || []);
+  const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
+
+  const params = useMemo(() => toURLSearchParams(searchParams), [searchParams]);
+  const remainingItems = Math.min(
+    VEHICLES_PER_PAGE,
+    initialVehicles.count - vehicles.length,
   );
+  const canLoadMore = remainingItems > 0;
 
-  if (pagedVehicles.some((data) => data === null)) {
-    return (
-      <div className="mt-24 text-center text-3xl font-medium text-white lg:mt-28 lg:text-4xl">
-        Error loading vehicles
-      </div>
-    );
-  }
+  useEffect(() => {
+    setVehicles(initialVehicles.results || []);
+    setPage(1);
+    setError(null);
+  }, [initialVehicles]);
 
-  const totalShowed = pagedVehicles.reduce(
-    (acc, data) => acc + (data?.results.length || 0),
-    0,
-  );
-
-  const [{ count }] = pagedVehicles as NonNullable<(typeof pagedVehicles)[0]>[];
-
-  const maxPage = Math.ceil(count / VEHICLES_PER_PAGE);
+  const handleLoadMore = useCallback(() => {
+    startTransition(async () => {
+      try {
+        const nextPage = page + 1;
+        params.set("page", nextPage.toString());
+        const result = await getVehicles(params);
+        if (!result?.results || result.results.length === 0) {
+          setError("No more vehicles to load.");
+          return;
+        }
+        setPage(nextPage);
+        setVehicles((prev) => [...prev, ...result.results]);
+        setError(null);
+      } catch {
+        setError("Failed to load more vehicles. Please try again.");
+      }
+    });
+  }, [page, params]);
 
   return (
     <>
@@ -46,28 +74,31 @@ export default async function Vehicles({
           Inventory
         </h1>
         <div className="text-lg text-white md:order-3 md:basis-full">
-          {count || 0} Vehicles found
+          {initialVehicles.count || 0} Vehicles found
         </div>
-        <FiltersWrapper />
+        <Filters makes={makes} />
       </div>
       <div className="mt-10 lg:mt-7.5">
-        {totalShowed > 0 ? (
+        {error && <p className="text-center text-lg text-red-500">{error}</p>}
+        {vehicles.length > 0 ? (
           <>
             <div className="grid gap-5 sm:grid-cols-2">
-              {pagedVehicles.map((data, pageIndex) =>
-                data?.results.map((vehicle) => (
-                  <VehicleCard
-                    key={`${vehicle.id}-${pageIndex}`}
-                    vehicle={vehicle}
-                  />
-                )),
+              {vehicles.map((vehicle) => (
+                <VehicleCard key={vehicle.id} vehicle={vehicle} />
+              ))}
+              {isPending && (
+                <>
+                  {[...Array(remainingItems)].map((_, i) => (
+                    <VehicleSkeleton key={`skeleton-${i}`} />
+                  ))}
+                </>
               )}
             </div>
-            {count > totalShowed && (
+            {canLoadMore && (
               <LoadMoreButton
-                currentPage={page}
-                maxPage={maxPage}
-                count={count}
+                remainingItems={remainingItems}
+                handleLoadMore={handleLoadMore}
+                pending={isPending}
               />
             )}
           </>

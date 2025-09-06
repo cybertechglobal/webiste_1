@@ -14,8 +14,8 @@ import { useState } from "react";
 type FilterComboboxProps = {
   placeholder: string;
   options: FilterOptions[] | null;
-  selected: FilterOptions | null;
-  onChange: (value: FilterOptions | null) => void;
+  selected: FilterOptions;
+  onChange: (value: FilterOptions) => void;
   disabled?: boolean;
 };
 
@@ -32,7 +32,7 @@ export default function FilterCombobox({
     query === ""
       ? options
       : options?.filter((option) => {
-          return option.label.toLowerCase().includes(query.toLowerCase());
+          return option?.label.toLowerCase().includes(query.toLowerCase());
         });
 
   return (
@@ -47,7 +47,7 @@ export default function FilterCombobox({
         <ComboboxInput
           aria-label={placeholder}
           className="placeholder:text-subtitle bg-card outline-subtitle border-subtitle h-10 w-full border pr-0.5 pl-4 text-white outline-none data-disabled:cursor-not-allowed data-disabled:opacity-50 data-focus:border-white"
-          displayValue={(option: FilterOptions | null) => option?.label || ""}
+          displayValue={(option: FilterOptions) => option?.label || ""}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={placeholder}
         />
