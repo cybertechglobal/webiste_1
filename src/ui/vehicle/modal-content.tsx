@@ -110,7 +110,7 @@ export default function ModalContent({
                 )}
                 {index + 1 < images.length ? (
                   <button
-                    className="transitionx absolute top-[calc(50%-16px)] right-3 cursor-pointer rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg hover:bg-black/75 hover:text-white focus:outline-none"
+                    className="absolute top-[calc(50%-16px)] right-3 cursor-pointer rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
                     onClick={() => changePhotoId(index + 1)}
                   >
@@ -149,7 +149,7 @@ export default function ModalContent({
           <div className="fixed inset-x-0 bottom-0 z-40 overflow-hidden bg-gradient-to-b from-black/0 to-black/60">
             <motion.div
               initial={false}
-              className="mx-auto mt-6 mb-6 flex aspect-[3/2] h-14 gap-x-1"
+              className="mx-auto my-6 flex aspect-[3/2] h-14 gap-x-1"
             >
               <AnimatePresence initial={false}>
                 {filteredImages.map(({ id, thumbnailUrl }) => (
