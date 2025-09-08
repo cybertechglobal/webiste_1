@@ -64,7 +64,7 @@ export default async function Page({ params }: PageProps) {
     <main className="relative grow">
       <div className="mt-5 mb-14 px-4 lg:mb-15 lg:px-6">
         <div className="mx-auto max-w-7xl">
-          <GoBackButton />
+          <GoBackButton href="/vehicles" />
 
           <div className="mt-10 grid gap-x-5 lg:[grid-template-columns:minmax(auto,630px)_minmax(360px,auto)]">
             <Gallery vehiclePhotos={vehiclePhotos} vehicle={vehicle} />

@@ -4,9 +4,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "About Page",
-  description: "This is the about page description",
-  keywords: "These, are, the, about, page, keywords",
+  title: "About",
+  description:
+    "At [Dealership Name], we are passionate about connecting people with their perfect vehicles. With years of experience in the automotive industry, our family-owned dealership prides itself on delivering top-quality new and pre-owned cars, exceptional customer service, and competitive financing options. Our dedicated team is committed to making your car-buying journey seamless and enjoyable, offering personalized guidance from selection to service. Discover why [Dealership Name] is your trusted partner for all your automotive needs!",
+  keywords:
+    "About Us, Car Dealership, Automotive Industry, Family-Owned, New Cars, Pre-Owned Vehicles, Customer Service, Vehicle Financing, Car Buying, Auto Services",
 };
 
 export default function Page() {

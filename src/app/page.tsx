@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Home Page",
+  title: "Home",
   description: "This is the home page description",
   keywords: "These, are, the, home, page, keywords",
 };
