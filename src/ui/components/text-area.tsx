@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/client-utils";
-import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+import { useMotionTemplate, useMotionValue } from "motion/react";
+import * as m from "motion/react-m";
 import { Ref, TextareaHTMLAttributes, useState } from "react";
 
 export default function Textarea({
@@ -27,7 +28,7 @@ export default function Textarea({
   }
 
   return (
-    <motion.div
+    <m.div
       style={{
         background: useMotionTemplate`
           radial-gradient(
@@ -50,6 +51,6 @@ export default function Textarea({
         ref={ref}
         {...props}
       />
-    </motion.div>
+    </m.div>
   );
 }

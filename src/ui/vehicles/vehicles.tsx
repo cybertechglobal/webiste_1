@@ -1,11 +1,9 @@
 "use client";
 
-import { getVehicles, Vehicles as VehiclesType } from "@/lib/data/get-vehicles";
-import {
-  FilterOptions,
-  SearchParams,
-  VEHICLES_PER_PAGE,
-} from "@/lib/definitions";
+import type { Vehicles as VehiclesType } from "@/lib/data/get-vehicles";
+import { getVehicles } from "@/lib/data/get-vehicles";
+import type { FilterOptions, SearchParams } from "@/lib/definitions";
+import { VEHICLES_PER_PAGE } from "@/lib/definitions";
 import { toURLSearchParams } from "@/lib/server-utils";
 import {
   useCallback,

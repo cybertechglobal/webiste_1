@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/client-utils";
-import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+import { useMotionTemplate, useMotionValue } from "motion/react";
+import * as m from "motion/react-m";
 import { InputHTMLAttributes, MouseEvent, Ref, useState } from "react";
 
 export default function Input({
@@ -30,7 +31,7 @@ export default function Input({
   }
 
   return (
-    <motion.div
+    <m.div
       style={{
         background: useMotionTemplate`
           radial-gradient(
@@ -54,6 +55,6 @@ export default function Input({
         ref={ref}
         {...props}
       />
-    </motion.div>
+    </m.div>
   );
 }

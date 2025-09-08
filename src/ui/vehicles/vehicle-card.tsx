@@ -3,7 +3,7 @@ import {
   formatPowerText,
   formatPrice,
 } from "@/lib/client-utils";
-import { Vehicle } from "@/lib/data/get-vehicles";
+import type { Vehicle } from "@/lib/data/get-vehicles";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -39,7 +39,7 @@ export default function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
               </h2>
             </Link>
             <div className="text-subtitle line-clamp-1 text-lg/5">
-              {vehicle.typeName}
+              {vehicle.typeName || "--"}
             </div>
           </div>
           <div className="text-primary-500 mt-2.25 line-clamp-1 text-3xl font-bold">
@@ -55,22 +55,27 @@ export default function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
             <div className="line-clamp-1">
               Gear:&nbsp;
               <span className="font-light capitalize">
-                {vehicle.technicalData.transmission}
+                {vehicle.technicalData
+                  ? vehicle.technicalData.transmission
+                  : "--"}
               </span>
             </div>
             <div className="line-clamp-1">
               Power:&nbsp;
               <span className="font-light">
-                {formatPowerText(
-                  Number(vehicle.technicalData.power),
-                  vehicle.technicalData.powerUnit,
-                )}
+                {vehicle.technicalData
+                  ? formatPowerText(
+                      Number(vehicle.technicalData.power),
+                      vehicle.technicalData.powerUnit,
+                    )
+                  : "--"}
               </span>
             </div>
             <div className="line-clamp-1">
               Fuel:&nbsp;
               <span className="font-light capitalize">
-                {vehicle.technicalData.fuel !== "no_information"
+                {vehicle.technicalData &&
+                vehicle.technicalData.fuel !== "no_information"
                   ? vehicle.technicalData.fuel
                   : "--"}
               </span>

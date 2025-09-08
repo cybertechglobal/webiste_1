@@ -11,7 +11,7 @@ const schema = z.object({
       id: z.string(),
       make: z.string(),
       model: z.string(),
-      typeName: z.string(),
+      typeName: z.string().nullable(),
       mileage: z.number().nullable(),
       retailPrice: z.number().nullable(),
       prices: z.array(
@@ -20,12 +20,14 @@ const schema = z.object({
           value: z.number(),
         }),
       ),
-      technicalData: z.object({
-        fuel: z.string(),
-        transmission: z.string(),
-        power: z.string(),
-        powerUnit: z.literal(["hp", "kw"]),
-      }),
+      technicalData: z
+        .object({
+          fuel: z.string(),
+          transmission: z.string(),
+          power: z.string(),
+          powerUnit: z.literal(["hp", "kw"]),
+        })
+        .nullable(),
       previewPhoto: z.object({
         url: z.string(),
       }),
@@ -34,7 +36,7 @@ const schema = z.object({
 });
 
 export type Vehicles = z.infer<typeof schema>;
-export type Vehicle = z.infer<typeof schema>["results"][number];
+export type Vehicle = Vehicles["results"][number];
 
 function filterSearchParams(params: URLSearchParams): URLSearchParams {
   const allowedKeys = [
