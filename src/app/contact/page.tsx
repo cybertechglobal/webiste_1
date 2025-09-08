@@ -9,9 +9,11 @@ import { domAnimation, LazyMotion } from "motion/react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Page",
-  description: "This is the contact page description",
-  keywords: "These, are, the, contact, page, keywords",
+  title: "Contact",
+  description:
+    "Welcome to the contact page of [Dealership Name], your trusted destination for premium vehicles and exceptional customer service. Reach out to our friendly team for inquiries about our extensive inventory, financing options, or to schedule a test drive. Whether you're looking for a new car, a certified pre-owned vehicle, or professional auto services, we're here to assist you every step of the way. Contact us via phone, email, or our convenient online form, and let us help you find your dream car today!",
+  keywords:
+    "Car Dealership, Contact Us, Auto Sales, Vehicle Financing, Test Drive, Customer Service, New Cars, Pre-Owned Vehicles, Automotive Services, Car Inquiry",
 };
 
 export default function Page() {

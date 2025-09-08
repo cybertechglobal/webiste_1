@@ -10,9 +10,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Vehicles Page",
-  description: "This is the vehicles page description",
-  keywords: "These, are, the, vehicles, page, keywords",
+  title: "Vehicles",
+  description:
+    "Explore our wide selection of vehicles at [Dealership Name]. Browse new and used cars, trucks, SUVs, and more, with detailed specs and pricing to find your perfect ride.",
+  keywords:
+    "vehicles, cars for sale, used cars, new cars, trucks, SUVs, car dealership, [Dealership Name], buy a car, vehicle inventory",
 };
 
 export default async function Page({

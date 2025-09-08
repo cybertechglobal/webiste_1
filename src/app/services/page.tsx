@@ -4,9 +4,11 @@ import ServicesCard from "@/ui/services-card";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Services Page",
-  description: "This is the services page description",
-  keywords: "These, are, the, services, page, keywords",
+  title: "Services",
+  description:
+    "At [Dealership Name], we offer a comprehensive range of automotive services to keep your vehicle in top condition. From routine maintenance like oil changes and tire rotations to complex repairs and diagnostics, our certified technicians use state-of-the-art equipment to ensure quality and reliability. We also provide detailing, parts replacement, and financing solutions tailored to your needs. Visit us for exceptional service and let us help you maintain your car’s performance and value!",
+  keywords:
+    "Automotive Services, Car Maintenance, Vehicle Repair, Oil Change, Tire Rotation, Auto Detailing, Car Parts, Vehicle Diagnostics, Financing Options, Certified Technicians",
 };
 
 export default function Page() {
