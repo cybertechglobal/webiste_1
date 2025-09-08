@@ -23,6 +23,7 @@ export default function Gallery({
   const thumbnailRefs = useRef<(null | { scrollTo: () => void })[]>([]);
 
   const hasVehiclePhotos = vehiclePhotos && vehiclePhotos.length > 0;
+  const commonImageAlt = `${vehicle.make} ${vehicle.model}${vehicle.typeName ? ` ${vehicle.typeName}` : ""}`;
 
   const refPassthrough = (el: HTMLDivElement) => {
     handlers.ref(el);
@@ -59,7 +60,7 @@ export default function Gallery({
               ? vehiclePhotos[curIndex].url
               : "/vehicles-page/placeholder.png"
           }
-          alt={`${vehicle.make} ${vehicle.model}`}
+          alt={commonImageAlt}
           height={472}
           width={630}
           loading="eager"
@@ -88,6 +89,7 @@ export default function Gallery({
               photo={photo}
               selected={index === curIndex}
               onClick={() => setCurIndex(index)}
+              alt={`${commonImageAlt}, image ${index + 1}`}
             />
           ))}
         </div>
@@ -96,6 +98,7 @@ export default function Gallery({
         open={open}
         curIndex={curIndex}
         images={vehiclePhotos}
+        alt={commonImageAlt}
         onClose={() => setOpen(false)}
         onChangePhotoId={(index) => {
           thumbnailRefs.current[index]?.scrollTo();

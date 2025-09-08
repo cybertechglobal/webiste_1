@@ -3,11 +3,12 @@ import { twMerge } from "tailwind-merge";
 import type { Vehicle } from "./data/get-vehicle";
 
 export function getBgImage(segment: string) {
+  //contact uses same bg as aobut page
   const bgMap = {
     home: "/home-page/hero.webp",
     about: "/about-page/hero.webp",
     services: "/services-page/hero.webp",
-    contact: "/contact-page/hero.webp",
+    contact: "/about-page/hero.webp",
   };
 
   return bgMap[segment as keyof typeof bgMap] || null;

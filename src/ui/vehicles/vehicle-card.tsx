@@ -22,7 +22,7 @@ export default function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
         <div className="shrink-0 overflow-hidden lg:place-self-center">
           <Image
             src={vehicle.previewPhoto?.url || "/vehicles-page/placeholder.png"}
-            alt={`${vehicle.make} ${vehicle.model}`}
+            alt={`${vehicle.make} ${vehicle.model}${vehicle.typeName ? ` ${vehicle.typeName}` : ""}`}
             className="size-full object-contain object-center transition-[scale] duration-200 group-hover:scale-110 sm:object-cover lg:object-contain"
             height={222}
             width={296}

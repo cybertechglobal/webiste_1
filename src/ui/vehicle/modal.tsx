@@ -14,6 +14,7 @@ type ModalProps = {
   open: boolean;
   curIndex: number;
   onChangePhotoId: (index: number) => void;
+  alt: string;
 };
 
 export default function Modal({
@@ -22,6 +23,7 @@ export default function Modal({
   open,
   curIndex,
   onChangePhotoId,
+  alt,
 }: ModalProps) {
   const [direction, setDirection] = useState(0);
 
@@ -74,6 +76,7 @@ export default function Modal({
           images={images.map((img, index) => ({ ...img, id: String(index) }))}
           changePhotoId={changePhotoId}
           closeModal={handleClose}
+          alt={alt}
         />
       </Dialog>
     </div>
