@@ -5,6 +5,7 @@ import Textarea from "@/ui/components/text-area";
 import { IconViber } from "@/ui/icons/viber";
 import Map from "@/ui/map";
 import { IconBrandTelegram, IconBrandWhatsapp } from "@tabler/icons-react";
+import { domAnimation, LazyMotion } from "motion/react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,76 +16,78 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="relative grow">
-      <div className="mt-5 mb-14 px-4 lg:mb-15 lg:px-6">
-        <div className="mx-auto max-w-7xl">
-          <GoBackButton />
-          <h1 className="mt-1 text-[50px]/12.5 text-[40px] font-medium text-white lg:mt-4 lg:text-[50px]/12.5">
-            Get in <span className="text-primary-500">touch</span>
-          </h1>
-          <div className="mt-7.5 grid gap-x-5 lg:mt-4 lg:mb-16 lg:grid-cols-2">
-            <div>
-              <p className="text-base/7 text-white">
-                Posuere ullamcorper egestas et massa. Risus habitant enim ac et
-                aliquam mi. Natoque massa massa tortor vestibulum viverra.
-              </p>
-              <form className="relative mb-12.5 lg:mb-0">
-                <div className="mt-5 grid gap-x-5 gap-y-2.5 lg:grid-cols-2">
-                  <Input placeholder="Name & Surname*" />
-                  <Input placeholder="Company Name" />
+    <LazyMotion features={domAnimation}>
+      <main className="relative grow">
+        <div className="mt-5 mb-14 px-4 lg:mb-15 lg:px-6">
+          <div className="mx-auto max-w-7xl">
+            <GoBackButton />
+            <h1 className="mt-1 text-[50px]/12.5 text-[40px] font-medium text-white lg:mt-4 lg:text-[50px]/12.5">
+              Get in <span className="text-primary-500">touch</span>
+            </h1>
+            <div className="mt-7.5 grid gap-x-5 lg:mt-4 lg:mb-16 lg:grid-cols-2">
+              <div>
+                <p className="text-base/7 text-white">
+                  Posuere ullamcorper egestas et massa. Risus habitant enim ac
+                  et aliquam mi. Natoque massa massa tortor vestibulum viverra.
+                </p>
+                <form className="relative mb-12.5 lg:mb-0">
+                  <div className="mt-5 grid gap-x-5 gap-y-2.5 lg:grid-cols-2">
+                    <Input placeholder="Name & Surname*" />
+                    <Input placeholder="Company Name" />
+                  </div>
+                  <div className="mt-2.5 grid gap-x-5 gap-y-2.5 lg:mt-3.25 lg:grid-cols-2">
+                    <Input placeholder="Email address*" />
+                    <Input placeholder="Phone number" />
+                  </div>
+                  <div className="mt-2.5 lg:mt-3.25">
+                    <Textarea
+                      placeholder="Your message*"
+                      rows={8}
+                      className="max-h-44 resize-none"
+                    />
+                  </div>
+                  <div className="mt-6 grid gap-x-5.75 lg:mt-4 lg:grid-cols-2">
+                    <button className="btn-primary px-6 py-2.5 text-lg">
+                      Send a message
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div className="self-end overflow-hidden">
+                <Map />
+                <div className="mt-3.5 flex items-center pb-2">
+                  <div className="mr-2 text-white">Also available on:</div>
+                  <ExternalLink
+                    href="#"
+                    className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
+                    aria-label="Contact on viber"
+                  >
+                    <IconViber />
+                  </ExternalLink>
+                  <ExternalLink
+                    href="#"
+                    className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
+                  >
+                    <IconBrandWhatsapp
+                      className="size-7 stroke-[1.75]"
+                      aria-label="Contact on whatsapp"
+                    />
+                  </ExternalLink>
+                  <ExternalLink
+                    href="#"
+                    className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
+                  >
+                    <IconBrandTelegram
+                      className="size-7 stroke-[1.75]"
+                      aria-label="Contact on telegram"
+                    />
+                  </ExternalLink>
                 </div>
-                <div className="mt-2.5 grid gap-x-5 gap-y-2.5 lg:mt-3.25 lg:grid-cols-2">
-                  <Input placeholder="Email address*" />
-                  <Input placeholder="Phone number" />
-                </div>
-                <div className="mt-2.5 lg:mt-3.25">
-                  <Textarea
-                    placeholder="Your message*"
-                    rows={8}
-                    className="max-h-44 resize-none"
-                  />
-                </div>
-                <div className="mt-6 grid gap-x-5.75 lg:mt-4 lg:grid-cols-2">
-                  <button className="btn-primary px-6 py-2.5 text-lg">
-                    Send a message
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div className="self-end overflow-hidden">
-              <Map />
-              <div className="mt-3.5 flex items-center pb-2">
-                <div className="mr-2 text-white">Also available on:</div>
-                <ExternalLink
-                  href="#"
-                  className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
-                  aria-label="Contact on viber"
-                >
-                  <IconViber />
-                </ExternalLink>
-                <ExternalLink
-                  href="#"
-                  className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
-                >
-                  <IconBrandWhatsapp
-                    className="size-7 stroke-[1.75]"
-                    aria-label="Contact on whatsapp"
-                  />
-                </ExternalLink>
-                <ExternalLink
-                  href="#"
-                  className="text-primary-500 hover:text-primary-700 rounded-sm p-2 transition-colors"
-                >
-                  <IconBrandTelegram
-                    className="size-7 stroke-[1.75]"
-                    aria-label="Contact on telegram"
-                  />
-                </ExternalLink>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </LazyMotion>
   );
 }

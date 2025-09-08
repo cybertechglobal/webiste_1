@@ -1,6 +1,6 @@
 import { getMakes } from "@/lib/data/get-makes";
 import { getVehicles } from "@/lib/data/get-vehicles";
-import { SearchParamsPromise } from "@/lib/definitions";
+import type { SearchParamsPromise } from "@/lib/definitions";
 import { toURLSearchParams } from "@/lib/server-utils";
 import GoBackButton from "@/ui/components/go-back-button";
 import Vehicles from "@/ui/vehicles/vehicles";

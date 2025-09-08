@@ -1,6 +1,6 @@
 "use client";
 
-import { FilterOptions } from "@/lib/definitions";
+import type { FilterOptions } from "@/lib/definitions";
 import {
   Combobox,
   ComboboxButton,

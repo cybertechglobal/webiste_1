@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { Vehicle } from "./data/get-vehicle";
 
 export function getBgImage(segment: string) {
   const bgMap = {
@@ -62,4 +63,97 @@ export function formatPowerText(power: number, powerUnit: "hp" | "kw") {
   }
 
   return `${powerInKw} kW (${powerInHp} HP)`;
+}
+
+function forceDownload(blobUrl: string, filename: string) {
+  const a = document.createElement("a");
+  a.download = filename;
+  a.href = blobUrl;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+export function downloadPhoto(url: string, filename?: string) {
+  const defaultFilename = url.split(/[\\/]/).pop() || "downloaded_file";
+
+  fetch(url, {
+    headers: new Headers({
+      Origin: location.origin,
+    }),
+    mode: "cors",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch: ${response.statusText}`);
+      }
+      return response.blob();
+    })
+    .then((blob) => {
+      const blobUrl = window.URL.createObjectURL(blob);
+      forceDownload(blobUrl, filename ?? defaultFilename);
+      window.URL.revokeObjectURL(blobUrl);
+    })
+    .catch((e) => console.error("Download failed:", e));
+}
+
+export const animationVariants = {
+  enter: (direction: number) => {
+    return {
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+    };
+  },
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => {
+    return {
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0,
+    };
+  },
+};
+
+export function range(start: number, end: number) {
+  const output = [];
+  if (typeof end === "undefined") {
+    end = start;
+    start = 0;
+  }
+  for (let i = start; i < end; i += 1) {
+    output.push(i);
+  }
+  return output;
+}
+
+export function resolvePrice(vehicle: Vehicle) {
+  return (
+    vehicle.retailPrice ??
+    vehicle.prices.find(
+      (p: { type: string; value: number }) => p.type === "retail",
+    )?.value ??
+    vehicle.prices[0]?.value ??
+    null
+  );
+}
+
+export function formatRegistration(dateString: string | null) {
+  if (!dateString) return "--";
+  const date = new Date(dateString);
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${month}/${year}`;
+}
+
+export function scrollIntoView(element: HTMLElement | null) {
+  if (!element) return;
+
+  element.scrollIntoView({
+    container: "nearest",
+    behavior: "smooth",
+    block: "nearest",
+    inline: "nearest",
+  } as ScrollIntoViewOptions);
 }

@@ -22,7 +22,7 @@ export default function LoadMoreButton({
           : `Load ${remainingItems} more vehicles`
       }
       className={clsx(
-        "btn-primary mx-auto mt-10 flex h-11 w-70 items-center justify-center px-20 lg:mt-15",
+        "btn-primary mx-auto mt-10 flex h-11 w-full items-center justify-center px-20 sm:w-70 lg:mt-15",
         pending && "cursor-not-allowed opacity-50",
       )}
     >

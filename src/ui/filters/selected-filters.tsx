@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useOptimistic, useTransition } from "react";
 
 import { formatMileage, formatPrice } from "@/lib/client-utils";
-import { FilterOptions, FiltersState } from "@/lib/definitions";
+import type { FilterOptions, FiltersState } from "@/lib/definitions";
 import { IconX } from "@tabler/icons-react";
 import Link from "next/link";
 

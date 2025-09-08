@@ -17,8 +17,6 @@
   --animate-overlayExit: overlayExit 400ms cubic-bezier(0.16, 1, 0.3, 1);
   --animate-overlayShow: overlayShow 000ms cubic-bezier(0.16, 1, 0.3, 1);
   --animate-contentShow: contentShow 175ms cubic-bezier(0.16, 1, 0.3, 1);
-
-  --container-7xl: 75rem;
 }
 
 @utility btn-primary {

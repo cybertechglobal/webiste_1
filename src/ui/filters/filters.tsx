@@ -1,12 +1,9 @@
 "use client";
 
 import { getModels } from "@/lib/data/get-models";
-import {
-  FilterOptions,
-  FiltersState,
-  initialFilters,
-  VEHICLE_FILTERS,
-} from "@/lib/definitions";
+import type { FilterOptions, FiltersState } from "@/lib/definitions";
+import { initialFilters, VEHICLE_FILTERS } from "@/lib/definitions";
+
 import FilterCombobox from "@/ui/filters/filter-combobox";
 import * as Dialog from "@radix-ui/react-dialog";
 import { IconX } from "@tabler/icons-react";
@@ -132,7 +129,7 @@ export default function Filters({ makes }: { makes: FilterOptions[] | null }) {
 
             <div className="bg-subtitle mt-5 h-px w-full" aria-hidden />
 
-            <div className="mt-5 ml-auto grid gap-5 md:[grid-template-columns:repeat(4,minmax(0,284px))]">
+            <div className="mt-5 ml-auto grid gap-5 md:grid-cols-4">
               <button
                 className="btn-tertiary flex h-11 items-center justify-center text-lg md:col-start-3"
                 onClick={handleResetFilters}
