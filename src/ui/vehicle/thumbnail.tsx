@@ -1,3 +1,4 @@
+import { scrollIntoView } from "@/lib/client-utils";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useImperativeHandle, useRef, useState } from "react";
@@ -23,20 +24,11 @@ export default function Thumbnail({
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  function scrollIntoView() {
-    elementRef.current?.scrollIntoView({
-      container: "nearest",
-      behavior: "smooth",
-      block: "nearest",
-      inline: "nearest",
-    } as ScrollIntoViewOptions);
-  }
-
   useImperativeHandle(
     ref,
     () => ({
       scrollTo: () => {
-        scrollIntoView();
+        scrollIntoView(elementRef.current);
       },
     }),
     [],
@@ -44,7 +36,7 @@ export default function Thumbnail({
 
   const handleClick = () => {
     onClick();
-    scrollIntoView();
+    scrollIntoView(elementRef.current);
   };
 
   return (

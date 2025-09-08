@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { Vehicle } from "./data/get-vehicle";
 
 export function getBgImage(segment: string) {
   const bgMap = {
@@ -115,7 +116,7 @@ export const animationVariants = {
   },
 };
 
-export const range = (start: number, end: number) => {
+export function range(start: number, end: number) {
   const output = [];
   if (typeof end === "undefined") {
     end = start;
@@ -125,4 +126,34 @@ export const range = (start: number, end: number) => {
     output.push(i);
   }
   return output;
-};
+}
+
+export function resolvePrice(vehicle: Vehicle) {
+  return (
+    vehicle.retailPrice ??
+    vehicle.prices.find(
+      (p: { type: string; value: number }) => p.type === "retail",
+    )?.value ??
+    vehicle.prices[0]?.value ??
+    null
+  );
+}
+
+export function formatRegistration(dateString: string | null) {
+  if (!dateString) return "--";
+  const date = new Date(dateString);
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${month}/${year}`;
+}
+
+export function scrollIntoView(element: HTMLElement | null) {
+  if (!element) return;
+
+  element.scrollIntoView({
+    container: "nearest",
+    behavior: "smooth",
+    block: "nearest",
+    inline: "nearest",
+  } as ScrollIntoViewOptions);
+}

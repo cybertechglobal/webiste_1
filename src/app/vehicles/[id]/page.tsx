@@ -2,6 +2,8 @@ import {
   formatMileage,
   formatPowerText,
   formatPrice,
+  formatRegistration,
+  resolvePrice,
 } from "@/lib/client-utils";
 import { getVehicle } from "@/lib/data/get-vehicle";
 import { getVehiclePhotos } from "@/lib/data/get-vehicle-photos";
@@ -58,22 +60,6 @@ export default async function Page({ params }: PageProps) {
 
   if (!vehicle) notFound();
 
-  const priceValue =
-    vehicle.retailPrice ??
-    vehicle.prices.find(
-      (p: { type: string; value: number }) => p.type === "retail",
-    )?.value ??
-    vehicle.prices[0]?.value ??
-    null;
-
-  function formatRegistration(dateString: string | null) {
-    if (!dateString) return "--";
-    const date = new Date(dateString);
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
-    return `${month}/${year}`;
-  }
-
   return (
     <main className="relative grow">
       <div className="mt-5 mb-14 px-4 lg:mb-15 lg:px-6">
@@ -88,7 +74,7 @@ export default async function Page({ params }: PageProps) {
               </h1>
               <h2 className="text-lg text-white">{vehicle.typeName || "--"}</h2>
               <div className="text-primary-500 mt-3.5 text-[50px]/16 font-bold">
-                {formatPrice(priceValue)}
+                {formatPrice(resolvePrice(vehicle))}
               </div>
               <div className="mt-3.5 line-clamp-1 font-medium text-white">
                 ID:&nbsp;
