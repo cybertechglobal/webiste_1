@@ -25,6 +25,7 @@ type ModalContentProps = {
   changePhotoId: (newVal: number) => void;
   closeModal: () => void;
   direction?: number;
+  alt: string;
 };
 
 export default function ModalContent({
@@ -33,6 +34,7 @@ export default function ModalContent({
   changePhotoId,
   closeModal,
   direction,
+  alt,
 }: ModalContentProps) {
   const [loaded, setLoaded] = useState(false);
 
@@ -85,7 +87,7 @@ export default function ModalContent({
                   width={1280}
                   height={853}
                   priority
-                  alt="Car image"
+                  alt={alt}
                   onLoad={() => setLoaded(true)}
                 />
               </motion.div>
@@ -104,6 +106,7 @@ export default function ModalContent({
                     className="absolute top-[calc(50%-16px)] left-3 cursor-pointer rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
                     onClick={() => changePhotoId(index - 1)}
+                    aria-label="Show previous slide"
                   >
                     <IconChevronLeft className="size-6" />
                   </button>
@@ -113,6 +116,7 @@ export default function ModalContent({
                     className="absolute top-[calc(50%-16px)] right-3 cursor-pointer rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none"
                     style={{ transform: "translate3d(0, 0, 0)" }}
                     onClick={() => changePhotoId(index + 1)}
+                    aria-label="Show next slide"
                   >
                     <IconChevronRight className="size-6" />
                   </button>
@@ -139,6 +143,7 @@ export default function ModalContent({
                 <button
                   onClick={() => closeModal()}
                   className="cursor-pointer rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white"
+                  aria-label="Close gallery"
                 >
                   <IconX className="size-5" />
                 </button>
@@ -174,7 +179,7 @@ export default function ModalContent({
                     )}
                   >
                     <Image
-                      alt="thumbnail"
+                      alt={`${alt}, thumbnail ${index + 1}`}
                       width={180}
                       height={120}
                       className={clsx(

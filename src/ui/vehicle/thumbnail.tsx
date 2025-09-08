@@ -13,6 +13,7 @@ type ThumbnailProps = {
   onClick: () => void;
   selected: boolean;
   ref?: React.Ref<{ scrollTo: () => void }>;
+  alt: string;
 };
 
 export default function Thumbnail({
@@ -20,6 +21,7 @@ export default function Thumbnail({
   onClick,
   selected,
   ref,
+  alt,
 }: ThumbnailProps) {
   const elementRef = useRef<HTMLDivElement | null>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -52,7 +54,7 @@ export default function Thumbnail({
       >
         <Image
           src={photo.thumbnailUrl}
-          alt={photo.originalName}
+          alt={alt}
           fill
           draggable={false}
           onLoad={() => setImageLoaded(true)}
