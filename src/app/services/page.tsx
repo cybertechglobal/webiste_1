@@ -38,7 +38,7 @@ export default function Page() {
               sed vitae. Pharetra velit vestibulum enim faucibus eget malesuada.
               Vestibulum nunc ut vulputate id turpis egestas suspendisse amet.
             </p>
-            <div className="mt-7.5 grid gap-5 md:grid-cols-3">
+            <div className="mt-7.5 grid gap-5 lg:grid-cols-3">
               {servicesCards.map(({ id, title, Icon, body }) => (
                 <ServicesCard key={id} title={title} Icon={Icon} body={body} />
               ))}
