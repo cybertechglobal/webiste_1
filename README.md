@@ -55,6 +55,10 @@ npm run build && npm run start
 # combine the two
 ```
 
+## Changing maps location
+
+To change the location of the iframe embed map go to `https://www.google.com/maps/` and then type in your desired address and search. Once you found your address, click `Share` => `Embed a map` => `Copy html`. Open `src\ui\map.tsx` and simply replace the src attribute on the iframe with the src from the iframe you copied.
+
 ## Troubleshooting
 
 If the project is not installing or running, make sure your node version is at least `18.18.0`.
